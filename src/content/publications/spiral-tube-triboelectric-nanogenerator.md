@@ -8,7 +8,7 @@ authors:
   - Kequan Xia
   - Zhiyuan Zhu
 year: 2026
-order: 2
+order: 3
 venue: Sustainable Chemistry for Climate Action
 volume: "8"
 articleNumber: "100187"

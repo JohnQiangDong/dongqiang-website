@@ -52,6 +52,10 @@ Names below are relative to each project's `materials/<project>/photos/` or `vid
 | vex-robotics | BV1tE411a7sR | External Bilibili embed | Existing video, unchanged |
 | haptic-robot-learning | so101机械臂操作演示1.mp4 | so101-teleoperation-overhead-01.mp4 | Early demo / matching `-poster.webp` |
 | haptic-robot-learning | so101机械臂操作演示2.mp4 | so101-teleoperation-side-02.mp4 | Early demo / matching `-poster.webp` |
+| mr-haptic-actuator | device-architecture-and-operating-principle.png | mr-actuator-device-architecture.webp | Project hero / actuator architecture |
+| mr-haptic-actuator | experiment-setup.png | mr-actuator-experiment-setup.webp | Experimental platform |
+| mr-haptic-actuator | thermal-stability.png | mr-actuator-thermal-stability.webp | Sustained-operation result |
+| mr-haptic-actuator | biomechanical-reference-validation.png | mr-actuator-biomechanical-reference-validation.webp | Model-derived reference validation |
 
 The two SO101 originals were moved from `materials/remote-control-demo/videos/` to `materials/haptic-robot-learning/videos/` without renaming or modifying their contents. The source-to-public mapping above preserves their meaning. Only the reviewed public derivatives are committed for publication; originals remain local.
 

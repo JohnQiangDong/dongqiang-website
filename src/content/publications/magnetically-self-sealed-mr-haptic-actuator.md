@@ -10,7 +10,7 @@ authors:
   - Cheng Cheng
   - Min Yu
 year: 2026
-order: 4
+order: 1
 venue: arXiv
 articleNumber: "2608.19635"
 type: preprint

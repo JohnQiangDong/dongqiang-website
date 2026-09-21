@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { siteUrl } from '../utils/urls';
 
 const publications = (await getCollection('publications')).sort((a, b) =>
-  (b.data.year ?? 0) - (a.data.year ?? 0) || (a.data.order ?? 999) - (b.data.order ?? 999)
+  (b.data.year ?? 0) - (a.data.year ?? 0) ||
+  Number(b.data.authors[0] === 'Dong Qiang') - Number(a.data.authors[0] === 'Dong Qiang') ||
+  (a.data.order ?? 999) - (b.data.order ?? 999)
 );
 
 const projectNames = new Map<string, string>();
@@ -27,7 +30,7 @@ const venueLine = (publication: (typeof publications)[number]) => {
     <header>
       <p class="eyebrow">Publications</p>
       <h1>Academic work</h1>
-      <p class="intro">Research articles, reviews, and preprints. Publication records are kept separately from the projects they support.</p>
+      <p class="intro">Research articles, reviews, and preprints. Within each year, first-author work is listed before other publications.</p>
     </header>
 
     <div class="year-group">
@@ -47,7 +50,7 @@ const venueLine = (publication: (typeof publications)[number]) => {
               <div class="publication-links">
                 {publication.data.paper && <a href={publication.data.paper} target="_blank" rel="noopener noreferrer">{publication.data.arxiv ? 'arXiv' : 'Paper'} ↗</a>}
                 {publication.data.doi && <span>DOI: {publication.data.doi}</span>}
-                {publication.data.project && projectNames.has(publication.data.project) && <span>Related project: {projectNames.get(publication.data.project)}</span>}
+                {publication.data.project && projectNames.has(publication.data.project) && <a href={siteUrl(`/projects/${publication.data.project}/`)}>Related project: {projectNames.get(publication.data.project)} ↗</a>}
               </div>
             </article>
           </li>

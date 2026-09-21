@@ -1,8 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/common/PageIntro.astro';
+import { getEntry } from 'astro:content';
+import { siteUrl } from '../utils/urls';
+
+const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
 ---
 
 <BaseLayout title="Research" description="Long-term research directions explored by Dong Qiang.">
-  <PageIntro eyebrow="Research" title="Research directions" intro="This page will describe long-term themes that connect projects, experiments, and publications." note="Research themes are provisional and will be developed from verified project material." />
+  <section class="page-shell research-page">
+    <header><p class="eyebrow">Research</p><h1>Making physical interaction measurable and perceptible</h1><p class="intro">My work connects smart materials, mechatronic design, sensing, and control to build systems that can render or interpret physical interaction.</p></header>
+
+    <section class="featured">
+      <div class="feature-copy"><p class="eyebrow">Current focus</p><h2>Magnetorheological haptic actuation</h2><p>The MR haptic actuator project integrates a magnetically self-sealed rotary mechanism with PWM excitation and model-based torque control. It is a concrete example of the research direction: treating materials, mechanisms, electronics, and control as one interaction system.</p><a href={siteUrl('/projects/mr-haptic-actuator/')}>Explore the project ↗</a></div>
+      <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
+    </section>
+
+    <div class="directions">
+      <article><p class="index">01</p><h2>Smart-material actuation</h2><p>Using field-responsive materials to create compact, continuously adjustable mechanical behaviour. The current MR work combines a multidisk working region with permanent-magnet-assisted fluid sealing.</p></article>
+      <article><p class="index">02</p><h2>Haptic rendering and control</h2><p>Characterising nonlinear and hysteretic actuator behaviour, then translating it into real-time control structures for stable torque feedback.</p></article>
+      <article><p class="index">03</p><h2>Human–machine and robotic interaction</h2><p>Connecting measured or model-derived interaction signals to physical feedback, with teleoperation and task-relevant torque profiles as motivating contexts.</p></article>
+    </div>
+
+    <p class="scope-note">Claims on this page are grounded in the linked project and preprint. The robot-assisted surgery diagrams are representative application scenarios rather than a clinical validation claim.</p>
+  </section>
 </BaseLayout>
+
+<style>
+  .research-page {padding-top:clamp(3.5rem,7vw,6rem)}header {padding-bottom:4rem;border-bottom:1px solid var(--line)}header h1 {max-width:18ch}.featured {display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;padding:4rem 0}.featured img {width:100%;height:auto;max-height:38rem;object-fit:contain;background:var(--soft)}.feature-copy h2,.directions h2 {font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.2;letter-spacing:-.03em}.feature-copy>p:not(.eyebrow),.directions article>p:not(.index) {color:var(--muted)}.directions {display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}.directions article {padding:2rem;background:var(--paper)}.index {margin:0;color:var(--accent);font-size:.8rem;font-weight:760;letter-spacing:.12em}.scope-note {margin:3rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--line);background:var(--soft);color:var(--muted);font-size:.9rem}@media(max-width:760px){.featured,.directions {grid-template-columns:1fr}.featured {padding:3rem 0}.directions {gap:0}.directions article {border-top:1px solid var(--line)}}
+</style>
