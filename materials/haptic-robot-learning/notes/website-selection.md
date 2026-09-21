@@ -1,6 +1,6 @@
 # SO101 demonstration selection
 
-The user identified both clips as early SO101 operation demonstrations and requested publication. They belong to the existing Haptic Robot Learning project according to the original repository brief; the Remote Control Demo project remains reserved for MATLAB/LabVIEW material.
+The user identified both clips as early SO101 operation demonstrations and requested publication. They belong to the Robot Imitation Learning research line, whose existing `haptic-robot-learning` slug and directory are retained for URL and repository stability. The Remote Control Demo project remains reserved for MATLAB/LabVIEW material.
 
 ## Sources and derivatives
 

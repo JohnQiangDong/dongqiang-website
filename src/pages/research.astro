@@ -4,27 +4,58 @@ import { getEntry } from 'astro:content';
 import { siteUrl } from '../utils/urls';
 
 const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
+const robot = (await getEntry('projects', 'haptic-robot-learning'))!.data;
 ---
 
-<BaseLayout title="Research" description="Long-term research directions explored by Dong Qiang.">
+<BaseLayout title="Research" description="The long-term research directions of Dong Qiang: MR haptic feedback and robot imitation learning.">
   <section class="page-shell research-page">
-    <header><p class="eyebrow">Research</p><h1>Making physical interaction measurable and perceptible</h1><p class="intro">My work connects smart materials, mechatronic design, sensing, and control to build systems that can render or interpret physical interaction.</p></header>
+    <header>
+      <p class="eyebrow">Research</p>
+      <h1>Two long-term research lines</h1>
+      <p class="intro">My work develops along two connected directions: rendering physical interaction through MR haptic feedback, and learning robot behaviour from human demonstrations.</p>
+    </header>
 
-    <section class="featured">
-      <div class="feature-copy"><p class="eyebrow">Current focus</p><h2>Magnetorheological haptic actuation</h2><p>The MR haptic actuator project integrates a magnetically self-sealed rotary mechanism with PWM excitation and model-based torque control. It is a concrete example of the research direction: treating materials, mechanisms, electronics, and control as one interaction system.</p><a href={siteUrl('/projects/mr-haptic-actuator/')}>Explore the project ↗</a></div>
-      <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
-    </section>
+    <div class="research-lines">
+      <article class="research-line">
+        <figure>
+          <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
+          <figcaption>Current project: the magnetically self-sealed MR haptic actuator.</figcaption>
+        </figure>
+        <div class="line-copy">
+          <p class="eyebrow">01 / MR Haptic Feedback</p>
+          <h2>Controllable physical feedback through smart-material actuation</h2>
+          <p>This research line investigates magnetorheological actuation, mechanism design, actuator characterisation, and real-time torque control for haptic interaction.</p>
+          <p>The current documented work is the MR Haptic Actuator project and its preprint, which integrate magnetic self-sealing, multidisk torque generation, low-hysteresis PWM operation, and model-based control.</p>
+          <div class="line-links">
+            <a href={siteUrl('/projects/mr-haptic-actuator/')}>Explore the project ↗</a>
+            <a href={actuator.links!.arxiv} target="_blank" rel="noopener noreferrer">Read the preprint ↗</a>
+          </div>
+        </div>
+      </article>
 
-    <div class="directions">
-      <article><p class="index">01</p><h2>Smart-material actuation</h2><p>Using field-responsive materials to create compact, continuously adjustable mechanical behaviour. The current MR work combines a multidisk working region with permanent-magnet-assisted fluid sealing.</p></article>
-      <article><p class="index">02</p><h2>Haptic rendering and control</h2><p>Characterising nonlinear and hysteretic actuator behaviour, then translating it into real-time control structures for stable torque feedback.</p></article>
-      <article><p class="index">03</p><h2>Human–machine and robotic interaction</h2><p>Connecting measured or model-derived interaction signals to physical feedback, with teleoperation and task-relevant torque profiles as motivating contexts.</p></article>
+      <article class="research-line robot-line">
+        <div class="video-posters" aria-label="Two SO101 teleoperation demonstration views">
+          {robot.demonstrations.map((demo) => (
+            <figure>
+              <img src={siteUrl(demo.poster)} alt={`${demo.title}: ${demo.description}`} width={demo.width} height={demo.height} loading="lazy" />
+              <figcaption>{demo.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <div class="line-copy">
+          <p class="eyebrow">02 / Robot Imitation Learning</p>
+          <h2>Building from human demonstrations</h2>
+          <p>This is a newly started research line. Its current public record is deliberately limited to two SO101 leader–follower teleoperation videos, showing the starting point for demonstration collection.</p>
+          <p>The videos do not yet claim a trained imitation-learning policy or learning results. Future verified hardware, datasets, methods, and experiments can accumulate on the same living project page.</p>
+          <div class="line-links"><a href={siteUrl('/projects/haptic-robot-learning/')}>View the two demonstrations ↗</a></div>
+        </div>
+      </article>
     </div>
 
-    <p class="scope-note">Claims on this page are grounded in the linked project and preprint. The robot-assisted surgery diagrams are representative application scenarios rather than a clinical validation claim.</p>
+    <p class="structure-note"><strong>Site structure:</strong> Research describes these long-term directions; Projects records their evolving technical work; Publications keeps the formal citation record.</p>
   </section>
 </BaseLayout>
 
 <style>
-  .research-page {padding-top:clamp(3.5rem,7vw,6rem)}header {padding-bottom:4rem;border-bottom:1px solid var(--line)}header h1 {max-width:18ch}.featured {display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;padding:4rem 0}.featured img {width:100%;height:auto;max-height:38rem;object-fit:contain;background:var(--soft)}.feature-copy h2,.directions h2 {font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.2;letter-spacing:-.03em}.feature-copy>p:not(.eyebrow),.directions article>p:not(.index) {color:var(--muted)}.directions {display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}.directions article {padding:2rem;background:var(--paper)}.index {margin:0;color:var(--accent);font-size:.8rem;font-weight:760;letter-spacing:.12em}.scope-note {margin:3rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--line);background:var(--soft);color:var(--muted);font-size:.9rem}@media(max-width:760px){.featured,.directions {grid-template-columns:1fr}.featured {padding:3rem 0}.directions {gap:0}.directions article {border-top:1px solid var(--line)}}
+  .research-page {padding-top:clamp(3.5rem,7vw,6rem)}header {padding-bottom:4rem;border-bottom:1px solid var(--line)}header h1 {max-width:16ch}.research-lines {display:grid}.research-line {display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;padding:5rem 0;border-bottom:1px solid var(--line)}.research-line:nth-child(even) .line-copy {grid-column:1;grid-row:1}.research-line:nth-child(even)>.video-posters {grid-column:2;grid-row:1}figure {margin:0}img {display:block;width:100%;height:auto;background:var(--soft)}figcaption {margin-top:.65rem;color:var(--muted);font-size:.85rem}.research-line>figure img {max-height:42rem;object-fit:contain}.line-copy h2 {font-size:clamp(1.8rem,3.8vw,3rem);line-height:1.12;letter-spacing:-.04em;margin:0}.line-copy>p:not(.eyebrow) {color:var(--muted);font-size:1.02rem}.line-links {display:flex;flex-wrap:wrap;gap:.7rem 1.5rem;margin-top:1.5rem;font-size:.92rem}.video-posters {display:grid;grid-template-columns:.72fr 1.28fr;gap:1rem;align-items:end}.video-posters figure:first-child img {aspect-ratio:9/16;object-fit:cover}.video-posters figure:last-child img {aspect-ratio:16/9;object-fit:cover}.structure-note {margin:3rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--line);background:var(--soft);color:var(--muted);font-size:.9rem}.structure-note strong {color:var(--ink)}@media(max-width:760px){header {padding-bottom:3rem}.research-line {grid-template-columns:1fr;padding:3rem 0}.research-line:nth-child(even) .line-copy,.research-line:nth-child(even)>.video-posters {grid-column:auto;grid-row:auto}.research-line:nth-child(even) .line-copy {order:2}.video-posters {grid-template-columns:1fr 1fr;align-items:start}}
 </style>
