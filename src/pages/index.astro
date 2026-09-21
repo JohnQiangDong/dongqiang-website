@@ -1,15 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import { siteUrl } from '../utils/urls';
+
+const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
+const vex = (await getEntry('projects', 'vex-robotics'))!.data;
+const robot = (await getEntry('projects', 'haptic-robot-learning'))!.data;
+const firstAuthorPaper = (await getEntry('publications', 'magnetically-self-sealed-mr-haptic-actuator'))!.data;
 ---
 
-<BaseLayout title="Home" description="Dong Qiang's long-term research and engineering website.">
-  <section class="page-shell">
-    <p class="eyebrow">Research · Engineering · Robotics</p>
-    <h1>Dong Qiang</h1>
-    <hr class="section-rule" />
-    <p class="intro">PhD researcher in Mechanical Engineering at Imperial College London. This site will document research directions, evolving technical projects, publications, and an engineering journey.</p>
-    <aside class="page-note" aria-label="Website status">
-      <p>The foundation is in place. Pages and project stories will be developed carefully as source material is reviewed.</p>
-    </aside>
-  </section>
+<BaseLayout title="Home" description="Dong Qiang researches MR haptic feedback and robot imitation learning at Imperial College London.">
+  <div class="home-page">
+    <section class="hero page-shell">
+      <div>
+        <p class="eyebrow">Research · Engineering · Robotics</p>
+        <h1>Dong Qiang</h1>
+        <p class="intro">PhD researcher in Mechanical Engineering at Imperial College London, working across MR haptic feedback, mechatronic systems, and robot imitation learning.</p>
+        <div class="hero-links"><a href={siteUrl('/research/')}>Research directions ↗</a><a href={siteUrl('/publications/')}>Publications ↗</a><a href={siteUrl('/cv/')}>CV ↗</a></div>
+      </div>
+      <div class="focus-list" aria-label="Research focus">
+        <p class="label">Current research lines</p>
+        <a href={siteUrl('/research/#mr-haptic-feedback')}><span>01</span>MR Haptic Feedback</a>
+        <a href={siteUrl('/research/#robot-imitation-learning')}><span>02</span>Robot Imitation Learning</a>
+      </div>
+    </section>
+
+    <section class="page-shell featured" aria-labelledby="featured-title">
+      <div class="section-heading"><div><p class="eyebrow">Featured work</p><h2 id="featured-title">Projects as living technical stories</h2></div><a href={siteUrl('/projects/')}>All projects ↗</a></div>
+
+      <a class="lead-project" href={siteUrl('/projects/mr-haptic-actuator/')}>
+        <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
+        <div><p class="project-index">01 / MR Haptic Feedback</p><h3>{actuator.title}</h3><p>{actuator.summary}</p><span>Explore the actuator and preprint ↗</span></div>
+      </a>
+
+      <div class="supporting-projects">
+        <a class="project-card" href={siteUrl('/projects/vex-robotics/')}>
+          <img src={siteUrl(vex.hero!.source)} alt={vex.hero!.alt} width="1600" height="900" loading="lazy" />
+          <div><p class="project-index">02 / Earlier work</p><h3>{vex.title}</h3><p>{vex.summary}</p><span>Competition story ↗</span></div>
+        </a>
+        <a class="project-card" href={siteUrl('/projects/haptic-robot-learning/')}>
+          <img src={siteUrl(robot.hero!.poster!)} alt={robot.hero!.alt} width="1280" height="720" loading="lazy" />
+          <div><p class="project-index">03 / Early-stage research</p><h3>{robot.title}</h3><p>{robot.summary}</p><span>Two SO101 demonstrations ↗</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="page-shell research-summary">
+      <div><p class="eyebrow">Research agenda</p><h2>Rendering interaction.<br />Learning from demonstration.</h2></div>
+      <div class="research-copy"><p>The research programme connects two scales: designing physical interfaces that make interaction forces perceivable, and studying how those signals can shape human demonstrations and robot learning.</p><a href={siteUrl('/research/')}>Read the research questions and planned agenda ↗</a></div>
+    </section>
+
+    <section class="page-shell publication-highlight">
+      <div><p class="eyebrow">First-author preprint</p><h2>{firstAuthorPaper.title}</h2><p>{firstAuthorPaper.venue}, {firstAuthorPaper.articleNumber} · {firstAuthorPaper.year}</p></div>
+      <div class="publication-actions"><a href={firstAuthorPaper.paper} target="_blank" rel="noopener noreferrer">Read on arXiv ↗</a><a href={siteUrl('/publications/')}>All publications ↗</a></div>
+    </section>
+
+    <section class="page-shell profile-strip">
+      <p class="eyebrow">Background</p>
+      <div class="profile-grid">
+        <article><p class="year">2025—</p><h2>PhD research</h2><p>Mechanical Engineering at Imperial College London, supported by the China Scholarship Council.</p></article>
+        <article><p class="year">2021—2025</p><h2>Mechanical Engineering</h2><p>MEng with First Class Honours at Imperial College London.</p></article>
+        <article><p class="year">2018—2020</p><h2>VEX Robotics</h2><p>Team leadership, robot design, fabrication, programming, and competition experience.</p></article>
+      </div>
+      <a class="cv-link" href={siteUrl('/cv/')}>Education, experience, skills, and selected activities ↗</a>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .home-page {overflow:hidden}.page-shell {padding-block:clamp(4rem,8vw,7rem)}.hero {display:grid;grid-template-columns:1.45fr .75fr;gap:clamp(3rem,8vw,7rem);align-items:end}.hero h1 {font-size:clamp(4rem,13vw,9rem);max-width:none}.hero-links,.publication-actions {display:flex;flex-wrap:wrap;gap:.7rem 1.5rem;margin-top:2rem;font-size:.92rem}.label,.project-index,.year {color:var(--accent);font-size:.76rem;font-weight:760;letter-spacing:.11em;text-transform:uppercase}.focus-list {border-top:1px solid var(--line)}.focus-list>.label {margin:1rem 0}.focus-list a {display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;padding:1rem 0;border-top:1px solid var(--line);color:var(--ink);font-size:1.05rem;text-decoration:none}.focus-list a span {color:var(--muted);font-size:.82rem}.featured {border-top:1px solid var(--line)}.section-heading {display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem}.section-heading h2,.research-summary h2 {max-width:18ch;margin:0;font-size:clamp(2rem,4vw,3.5rem);line-height:1.12;letter-spacing:-.04em}.lead-project {display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,6vw,5rem);align-items:center;color:var(--ink);text-decoration:none;padding:2rem;background:var(--soft)}.lead-project img {width:100%;height:auto;max-height:43rem;object-fit:contain}.lead-project h3,.project-card h3 {margin:.3rem 0;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.045em}.lead-project p:not(.project-index),.project-card p:not(.project-index) {color:var(--muted)}.lead-project span,.project-card span {color:var(--accent);font-size:.9rem}.supporting-projects {display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}.project-card {display:grid;grid-template-rows:auto 1fr;color:var(--ink);text-decoration:none;border-top:1px solid var(--line);padding-top:1.5rem}.project-card img {width:100%;height:20rem;object-fit:cover;background:var(--soft)}.project-card>div {padding-top:1.2rem}.project-card h3 {font-size:2rem}.research-summary {display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,7vw,6rem);border-block:1px solid var(--line)}.research-copy {align-self:end;color:var(--muted);font-size:1.08rem}.publication-highlight {display:flex;align-items:end;justify-content:space-between;gap:3rem}.publication-highlight h2 {max-width:50rem;margin:0;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.25;letter-spacing:-.03em}.publication-highlight p {color:var(--muted)}.publication-actions {min-width:max-content}.profile-strip {background:var(--soft);width:auto;max-width:none;padding-inline:max(1rem,calc((100vw - var(--max-width))/2))}.profile-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}.profile-grid article {padding:2rem;background:var(--soft)}.profile-grid h2 {margin:.4rem 0;font-size:1.4rem}.profile-grid article>p:last-child {color:var(--muted)}.cv-link {display:inline-block;margin-top:2rem}@media(max-width:760px){.hero,.lead-project,.research-summary {grid-template-columns:1fr}.supporting-projects,.profile-grid {grid-template-columns:1fr}.project-card img {height:auto}.section-heading,.publication-highlight {align-items:start;flex-direction:column}.publication-actions {min-width:0;margin-top:0}.lead-project {padding:1.25rem}.profile-grid {gap:0}}
+</style>

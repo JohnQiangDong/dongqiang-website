@@ -85,9 +85,16 @@ const publications = defineCollection({
 const research = defineCollection({
   loader: glob({ base: './src/content/research', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
+    slug: z.string(),
     title: z.string(),
     order: z.number().int().optional(),
     summary: z.string().optional(),
+    stage: z.enum(['established-foundation', 'early-stage']).optional(),
+    question: z.string(),
+    currentEvidence: z.string(),
+    agenda: z.array(z.string()).default([]),
+    project: z.string(),
+    publication: z.string().optional(),
   }),
 });
 

@@ -1,61 +1,78 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { siteUrl } from '../utils/urls';
 
-const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
-const robot = (await getEntry('projects', 'haptic-robot-learning'))!.data;
+const lines = (await getCollection('research')).sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+const projects = new Map<string, CollectionEntry<'projects'>['data']>();
+const publications = new Map<string, CollectionEntry<'publications'>['data']>();
+
+for (const line of lines) {
+  projects.set(line.data.project, (await getEntry('projects', line.data.project))!.data);
+  if (line.data.publication) publications.set(line.data.publication, (await getEntry('publications', line.data.publication))!.data);
+}
+
+const stageLabel = (stage?: string) => stage === 'early-stage' ? 'Early-stage research agenda' : 'Research line with an experimental foundation';
 ---
 
-<BaseLayout title="Research" description="The long-term research directions of Dong Qiang: MR haptic feedback and robot imitation learning.">
+<BaseLayout title="Research" description="Long-term research directions in MR haptic feedback and robot imitation learning.">
   <section class="page-shell research-page">
     <header>
       <p class="eyebrow">Research</p>
-      <h1>Two long-term research lines</h1>
-      <p class="intro">My work develops along two connected directions: rendering physical interaction through MR haptic feedback, and learning robot behaviour from human demonstrations.</p>
+      <h1>Questions that extend beyond a single project</h1>
+      <p class="intro">Research defines the long-term problems and methods I want to pursue. The Projects section records the specific systems, experiments, and demonstrations that currently support those directions.</p>
     </header>
 
     <div class="research-lines">
-      <article class="research-line">
-        <figure>
-          <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
-          <figcaption>Current project: the magnetically self-sealed MR haptic actuator.</figcaption>
-        </figure>
-        <div class="line-copy">
-          <p class="eyebrow">01 / MR Haptic Feedback</p>
-          <h2>Controllable physical feedback through smart-material actuation</h2>
-          <p>This research line investigates magnetorheological actuation, mechanism design, actuator characterisation, and real-time torque control for haptic interaction.</p>
-          <p>The current documented work is the MR Haptic Actuator project and its preprint, which integrate magnetic self-sealing, multidisk torque generation, low-hysteresis PWM operation, and model-based control.</p>
-          <div class="line-links">
-            <a href={siteUrl('/projects/mr-haptic-actuator/')}>Explore the project ↗</a>
-            <a href={actuator.links!.arxiv} target="_blank" rel="noopener noreferrer">Read the preprint ↗</a>
-          </div>
-        </div>
-      </article>
+      {lines.map((line, index) => {
+        const project = projects.get(line.data.project)!;
+        const publication = line.data.publication ? publications.get(line.data.publication) : undefined;
+        return (
+          <article class="research-line" id={line.data.slug}>
+            <div class="line-heading">
+              <p class="line-number">{String(index + 1).padStart(2, '0')}</p>
+              <div><p class="eyebrow">{stageLabel(line.data.stage)}</p><h2>{line.data.title}</h2><p class="summary">{line.data.summary}</p></div>
+            </div>
 
-      <article class="research-line robot-line">
-        <div class="video-posters" aria-label="Two SO101 teleoperation demonstration views">
-          {robot.demonstrations.map((demo) => (
-            <figure>
-              <img src={siteUrl(demo.poster)} alt={`${demo.title}: ${demo.description}`} width={demo.width} height={demo.height} loading="lazy" />
-              <figcaption>{demo.title}</figcaption>
-            </figure>
-          ))}
-        </div>
-        <div class="line-copy">
-          <p class="eyebrow">02 / Robot Imitation Learning</p>
-          <h2>Building from human demonstrations</h2>
-          <p>This is a newly started research line. Its current public record is deliberately limited to two SO101 leader–follower teleoperation videos, showing the starting point for demonstration collection.</p>
-          <p>The videos do not yet claim a trained imitation-learning policy or learning results. Future verified hardware, datasets, methods, and experiments can accumulate on the same living project page.</p>
-          <div class="line-links"><a href={siteUrl('/projects/haptic-robot-learning/')}>View the two demonstrations ↗</a></div>
-        </div>
-      </article>
+            <div class="question"><p class="label">Research question</p><p>{line.data.question}</p></div>
+
+            <div class="line-body">
+              <section>
+                <p class="label">Current foundation</p>
+                <p>{line.data.currentEvidence}</p>
+                <div class="links">
+                  <a href={siteUrl(`/projects/${line.data.project}/`)}>Current project: {project.title} ↗</a>
+                  {publication && <a href={publication.paper} target="_blank" rel="noopener noreferrer">Related preprint ↗</a>}
+                </div>
+              </section>
+              <section>
+                <p class="label">Planned research agenda</p>
+                <ul>{line.data.agenda.map((item) => <li>{item}</li>)}</ul>
+              </section>
+            </div>
+
+            {line.data.slug === 'mr-haptic-feedback' ? (
+              <figure class="evidence-media single">
+                <img src={siteUrl(project.hero!.source)} alt={project.hero!.alt} width="1800" height="1903" loading="lazy" />
+                <figcaption>The current actuator project provides an experimental foundation for the broader research line.</figcaption>
+              </figure>
+            ) : (
+              <div class="evidence-media video-posters" aria-label="Current evidence: two SO101 teleoperation demonstration views">
+                {project.demonstrations.map((demo) => (
+                  <figure><img src={siteUrl(demo.poster)} alt={`${demo.title}: ${demo.description}`} width={demo.width} height={demo.height} loading="lazy" /><figcaption>{demo.title}</figcaption></figure>
+                ))}
+              </div>
+            )}
+          </article>
+        );
+      })}
     </div>
 
-    <p class="structure-note"><strong>Site structure:</strong> Research describes these long-term directions; Projects records their evolving technical work; Publications keeps the formal citation record.</p>
+    <p class="structure-note"><strong>Reading the site:</strong> Research sets the agenda. Projects show implemented work and verified progress. Publications provide the formal academic record.</p>
   </section>
 </BaseLayout>
 
 <style>
-  .research-page {padding-top:clamp(3.5rem,7vw,6rem)}header {padding-bottom:4rem;border-bottom:1px solid var(--line)}header h1 {max-width:16ch}.research-lines {display:grid}.research-line {display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center;padding:5rem 0;border-bottom:1px solid var(--line)}.research-line:nth-child(even) .line-copy {grid-column:1;grid-row:1}.research-line:nth-child(even)>.video-posters {grid-column:2;grid-row:1}figure {margin:0}img {display:block;width:100%;height:auto;background:var(--soft)}figcaption {margin-top:.65rem;color:var(--muted);font-size:.85rem}.research-line>figure img {max-height:42rem;object-fit:contain}.line-copy h2 {font-size:clamp(1.8rem,3.8vw,3rem);line-height:1.12;letter-spacing:-.04em;margin:0}.line-copy>p:not(.eyebrow) {color:var(--muted);font-size:1.02rem}.line-links {display:flex;flex-wrap:wrap;gap:.7rem 1.5rem;margin-top:1.5rem;font-size:.92rem}.video-posters {display:grid;grid-template-columns:.72fr 1.28fr;gap:1rem;align-items:end}.video-posters figure:first-child img {aspect-ratio:9/16;object-fit:cover}.video-posters figure:last-child img {aspect-ratio:16/9;object-fit:cover}.structure-note {margin:3rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--line);background:var(--soft);color:var(--muted);font-size:.9rem}.structure-note strong {color:var(--ink)}@media(max-width:760px){header {padding-bottom:3rem}.research-line {grid-template-columns:1fr;padding:3rem 0}.research-line:nth-child(even) .line-copy,.research-line:nth-child(even)>.video-posters {grid-column:auto;grid-row:auto}.research-line:nth-child(even) .line-copy {order:2}.video-posters {grid-template-columns:1fr 1fr;align-items:start}}
+  .research-page {padding-top:clamp(3.5rem,7vw,6rem)}header {padding-bottom:4rem;border-bottom:1px solid var(--line)}header h1 {max-width:18ch}.research-lines {display:grid}.research-line {padding:5rem 0;border-bottom:1px solid var(--line)}.line-heading {display:grid;grid-template-columns:5rem 1fr;gap:2rem}.line-number {margin:0;color:var(--accent);font-size:1rem;font-weight:760}.line-heading h2 {max-width:16ch;margin:0;font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-.055em}.summary {max-width:45rem;color:var(--muted);font-size:1.15rem}.question {display:grid;grid-template-columns:12rem 1fr;gap:2rem;margin:3rem 0;padding:1.5rem 0;border-block:1px solid var(--line)}.question>p:last-child {max-width:52rem;margin:0;font-size:clamp(1.25rem,2.5vw,1.7rem);line-height:1.45;letter-spacing:-.02em}.label {margin:0;color:var(--accent);font-size:.76rem;font-weight:760;letter-spacing:.11em;text-transform:uppercase}.line-body {display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem)}.line-body section>p:not(.label),.line-body li {color:var(--muted)}.line-body ul {margin:1rem 0 0;padding-left:1.2rem}.line-body li+li {margin-top:.65rem}.links {display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:1.25rem;font-size:.9rem}.evidence-media {margin-top:3rem}.evidence-media img {display:block;width:100%;height:auto;background:var(--soft)}.evidence-media figcaption {margin-top:.6rem;color:var(--muted);font-size:.85rem}.single {display:grid;grid-template-columns:minmax(0,1fr) 14rem;gap:1.5rem;align-items:end}.single img {max-height:34rem;object-fit:contain}.video-posters {display:grid;grid-template-columns:.6fr 1.4fr;gap:1.5rem;align-items:end}.video-posters figure {margin:0}.video-posters figure:first-child img {aspect-ratio:9/16;object-fit:cover}.video-posters figure:last-child img {aspect-ratio:16/9;object-fit:cover}.structure-note {margin:3rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--line);background:var(--soft);color:var(--muted);font-size:.9rem}.structure-note strong {color:var(--ink)}@media(max-width:720px){header {padding-bottom:3rem}.research-line {padding:3rem 0}.line-heading {grid-template-columns:1fr;gap:.7rem}.question {grid-template-columns:1fr;gap:.75rem}.line-body,.single {grid-template-columns:1fr}.video-posters {grid-template-columns:1fr 1fr;align-items:start}}
 </style>
