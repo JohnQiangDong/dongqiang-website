@@ -34,6 +34,15 @@ const projects = defineCollection({
     tags: z.array(z.string()).default([]),
     hero: mediaSchema.optional(),
     gallery: z.array(z.object({ source: z.string(), alt: z.string(), caption: z.string() })).default([]),
+    demonstrations: z.array(z.object({
+      title: z.string(),
+      description: z.string(),
+      source: z.string(),
+      webm: z.string().optional(),
+      poster: z.string(),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    })).default([]),
     links: z.object({
       project: z.url().optional(),
       paper: z.url().optional(),

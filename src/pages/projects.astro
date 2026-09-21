@@ -3,12 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getEntry } from 'astro:content';
 import { siteUrl } from '../utils/urls';
 const vex = (await getEntry('projects', 'vex-robotics'))!.data;
+const robot = (await getEntry('projects', 'haptic-robot-learning'))!.data;
 ---
 
 <BaseLayout title="Projects" description="Research, robotics, engineering, and prototype projects by Dong Qiang.">
   <section class="page-shell">
     <p class="eyebrow">Projects</p><h1>Living technical stories</h1>
     <p class="intro">Research, robotics, and engineering work, with room to evolve.</p>
+    <h2>Robotics & Prototypes</h2>
+    <a class="project-link" href={siteUrl('/projects/haptic-robot-learning/')}>
+      <img src={siteUrl(robot.hero!.poster!)} alt={robot.hero!.alt} width="1280" height="720" />
+      <div><p class="eyebrow">SO101 / Early demonstrations</p><h3>{robot.title} ↗</h3><p>{robot.summary}</p></div>
+    </a>
     <h2>Earlier Work</h2>
     <a class="project-link" href={siteUrl('/projects/vex-robotics/')}>
       <img src={siteUrl(vex.hero!.source)} alt={vex.hero!.alt} width="1600" height="900" />

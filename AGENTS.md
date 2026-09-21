@@ -56,6 +56,8 @@ Project slugs and directories use lowercase kebab-case. A growing project remain
 
 ## Media safety
 
+Follow `docs/ASSET_NAMING.md` for project ownership and published filenames. Keep its source-to-public register current. Preserve existing published URLs. SO101 teleoperation belongs to `haptic-robot-learning`; `remote-control-demo` remains the MATLAB/LabVIEW demonstration project.
+
 Before publishing any media:
 
 - Confirm that it belongs to the correct project and that permission to publish is clear.

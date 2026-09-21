@@ -1,5 +1,7 @@
 # Media workflow
 
+See [ASSET_NAMING.md](ASSET_NAMING.md) for the shared naming convention, folder ownership, and current source-to-public asset register.
+
 Website media follows one deliberate path:
 
 ```text
