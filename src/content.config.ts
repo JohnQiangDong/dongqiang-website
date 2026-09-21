@@ -33,6 +33,7 @@ const projects = defineCollection({
     order: z.number().int().optional(),
     tags: z.array(z.string()).default([]),
     hero: mediaSchema.optional(),
+    gallery: z.array(z.object({ source: z.string(), alt: z.string(), caption: z.string() })).default([]),
     links: z.object({
       project: z.url().optional(),
       paper: z.url().optional(),

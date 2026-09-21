@@ -17,6 +17,9 @@ Thumbs.db
 materials-local/*
 !materials-local/README.md
 
+# Keep this supplied 142 MB camera/video source local; publish reviewed derivatives only.
+materials/vex-robotics/videos/世锦赛宣传视频.mp4
+
 # Local logs
 *.log
 npm-debug.log*

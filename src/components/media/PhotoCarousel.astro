@@ -1,0 +1,58 @@
+---
+import { siteUrl } from '../../utils/urls';
+interface Props { photos: {source: string; alt: string; caption: string}[] }
+const { photos } = Astro.props;
+---
+<photo-carousel aria-label="VEX photo album" role="region" aria-roledescription="carousel">
+  <div class="slides">
+    {photos.map((photo, index) => <figure data-slide hidden={index !== 0} aria-label={`${index + 1} of ${photos.length}`}>
+      <img src={siteUrl(photo.source)} alt={photo.alt} loading="lazy" width="1600" height="1200" />
+      <figcaption>{photo.caption}</figcaption>
+    </figure>)}
+  </div>
+  <div class="controls" hidden>
+    <span data-count aria-live="polite">1 / {photos.length}</span>
+    <div><button type="button" data-prev aria-label="Previous photo">←</button><button type="button" data-play>Play shuffle</button><button type="button" data-next aria-label="Next photo">→</button></div>
+  </div>
+  <noscript><p>Enable JavaScript to browse the album.</p></noscript>
+</photo-carousel>
+<script>
+  class PhotoCarousel extends HTMLElement {
+    connectedCallback() {
+      const slides = Array.from(this.querySelectorAll<HTMLElement>('[data-slide]'));
+      const play = this.querySelector<HTMLButtonElement>('[data-play]')!;
+      const count = this.querySelector<HTMLElement>('[data-count]')!;
+      const controls = this.querySelector<HTMLElement>('.controls')!;
+      controls.hidden = false;
+      let index = 0;
+      let timer: ReturnType<typeof setInterval> | undefined;
+      const show = (next: number) => {
+        slides[index].hidden = true;
+        index = (next + slides.length) % slides.length;
+        slides[index].hidden = false;
+        count.textContent = `${index + 1} / ${slides.length}`;
+      };
+      const stop = () => { clearInterval(timer); timer = undefined; play.textContent = 'Play shuffle'; count.setAttribute('aria-live', 'polite'); };
+      play.addEventListener('click', () => {
+        if (timer) return stop();
+        play.textContent = 'Pause shuffle';
+        count.setAttribute('aria-live', 'off');
+        timer = setInterval(() => { if (!document.hidden && !this.matches(':hover')) show(index + 1 + Math.floor(Math.random() * (slides.length - 1))); }, 5000);
+      });
+      this.querySelector('[data-prev]')!.addEventListener('click', () => { stop(); show(index - 1); });
+      this.querySelector('[data-next]')!.addEventListener('click', () => { stop(); show(index + 1); });
+      this.addEventListener('keydown', (event) => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); stop(); show(index + (event.key === 'ArrowRight' ? 1 : -1)); } });
+      this.addEventListener('focusin', (event) => { if (event.target !== play) stop(); });
+    }
+  }
+  customElements.define('photo-carousel', PhotoCarousel);
+</script>
+<style>
+  photo-carousel {display:block; min-width:0}
+  figure {margin:0} figure[hidden], [hidden] {display:none!important}
+  img {display:block;width:100%;height:clamp(20rem,48vw,40rem);object-fit:contain;background:#101820}
+  figcaption {padding:1rem 0;color:var(--muted);font-size:.9rem}
+  .controls {display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:1rem}
+  .controls div {display:flex;gap:.5rem} button {min-height:44px;padding:.5rem 1rem;background:white;border:1px solid var(--line);color:var(--ink);cursor:pointer;font:inherit;font-size:.9rem}
+  button:hover {background:var(--soft)} button:focus-visible {outline:3px solid var(--accent);outline-offset:3px}
+</style>

@@ -1,0 +1,46 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhotoCarousel from '../../components/media/PhotoCarousel.astro';
+import { siteUrl } from '../../utils/urls';
+const entry = (await getEntry('projects', 'vex-robotics'))!;
+const { Content } = await render(entry);
+const project = entry.data;
+const asset = (name: string) => siteUrl(`/media/projects/vex-robotics/${name}.webp`);
+---
+<BaseLayout title={project.title} description={project.summary!}>
+  <article class="vex-page">
+    <header class="project-heading">
+      <a class="back" href={siteUrl('/projects/')}>← All projects</a>
+      <div class="heading-row"><div><p class="eyebrow">Earlier work / High-school robotics</p><h1>{project.title}</h1></div><p class="dek">The robot.<br />The team.<br />The competition floor.</p></div>
+      <div class="project-meta"><span>Competition robotics</span><span>Selected photographs · 2019</span><a href="#film">Watch the video ↓</a></div>
+    </header>
+    <figure class="hero"><img src={siteUrl(project.hero!.source)} alt={project.hero!.alt} width="1600" height="900" fetchpriority="high" /><figcaption>The robot · VEX Worlds, 2019</figcaption></figure>
+    <section class="split introduction"><div><p class="eyebrow">01 / Beginnings</p><h2>Before the research,<br />there was the robot.</h2></div><div class="body-copy"><Content /></div></section>
+    <section id="film" class="film">
+      <div class="section-heading"><div><p class="eyebrow">02 / In motion</p><h2>From the video archive</h2></div><a href={project.links!.video} target="_blank" rel="noopener noreferrer">Watch on Bilibili ↗</a></div>
+      <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=73448370&bvid=BV1tE411a7sR&cid=125641973&p=1&autoplay=0" title="VEX Robotics video on Bilibili" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <p class="caption">If the embedded player is unavailable, open the video directly on Bilibili.</p>
+    </section>
+    <section class="competition">
+      <div class="section-heading"><div><p class="eyebrow">03 / Competition</p><h2>Beyond the workbench</h2></div></div>
+      <figure class="arena"><img src={asset('vex-worlds-arena-2019')} alt="Competition fields under red lighting in the VEX Worlds arena." width="1600" height="1200" loading="lazy"/><figcaption>The finals arena · VEX Worlds, 2019</figcaption></figure>
+      <div class="split awards"><div><p class="eyebrow">Tianjin / February 2019</p><h3>A record from the competition</h3><p>The certificates for team ULINK–67677B record the Tournament Champion Award and the Robot Skills Champion Award at the Tianjin International School Robotics Competition.</p></div><figure><img src={asset('vex-tianjin-awards')} alt="Two trophies and certificates for team ULINK–67677B: Tournament Champion and Robot Skills Champion, February 2019." width="1080" height="1080" loading="lazy"/><figcaption>Team awards and the robot, photographed together.</figcaption></figure></div>
+    </section>
+    <section class="album"><div class="section-heading"><div><p class="eyebrow">04 / People & places</p><h2>A few moments along the way</h2></div></div><PhotoCarousel photos={project.gallery} /></section>
+    <div class="end-link"><a href={siteUrl('/projects/')}>← Back to projects</a><span>VEX Robotics · Earlier Work</span></div>
+  </article>
+</BaseLayout>
+<style>
+  .vex-page {width:min(calc(100% - 2rem),72rem);margin:auto;padding:3rem 0 4rem}
+  .back {font-size:.9rem;text-decoration:none}.heading-row {display:flex;justify-content:space-between;align-items:end;gap:2rem;margin:3rem 0 2rem} h1 {font-size:clamp(3rem,7.5vw,6rem);max-width:none}
+  .dek {color:var(--muted);font-size:1.1rem;line-height:1.5;margin:0}.project-meta {display:flex;gap:1rem 2rem;flex-wrap:wrap;border-top:1px solid var(--line);padding:1.2rem 0;font-size:.9rem}.project-meta a {margin-left:auto}
+  figure {margin:0} img {display:block;width:100%;height:auto} figcaption,.caption {font-size:.88rem;color:var(--muted);margin:.7rem 0 0}.hero img {background:var(--soft)}
+  h2 {font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.15;letter-spacing:-.035em;margin:0} h3 {font-size:1.65rem;line-height:1.3;letter-spacing:-.02em;margin:0 0 1rem}
+  .split {display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem)}.introduction {padding:5rem 0}.body-copy {font-size:1.1rem;color:var(--muted)}.body-copy :global(p) {margin-top:0}
+  section {scroll-margin-top:2rem}.section-heading {display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:2rem}.section-heading>a {font-size:.9rem;white-space:nowrap}
+  .film {padding:3rem;background:var(--soft)} iframe {width:100%;aspect-ratio:16/9;border:0;display:block;background:#101820}
+  .competition,.album {padding-top:5rem}.arena img {max-height:42rem;object-fit:contain;background:#101820}.awards {align-items:center;padding-top:3rem}.awards p:not(.eyebrow) {color:var(--muted)}.awards figure {max-width:30rem;justify-self:end}
+  .end-link {display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--line);font-size:.9rem}.end-link span {color:var(--muted)}
+  @media(max-width:640px) {.heading-row {display:block;margin-top:2rem}.dek {margin-top:1.5rem}.split {grid-template-columns:1fr}.project-meta a {margin-left:0}.film {padding:1.25rem}.section-heading {align-items:start;flex-direction:column}.introduction {padding:3rem 0}.competition,.album {padding-top:3rem}}
+</style>
