@@ -1,0 +1,18 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  note: string;
+}
+
+const { eyebrow, title, intro, note } = Astro.props;
+---
+
+<section class="page-shell">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  <hr class="section-rule" />
+  <p class="intro">{intro}</p>
+  <aside class="page-note" aria-label="Page status"><p>{note}</p></aside>
+</section>

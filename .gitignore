@@ -1,0 +1,23 @@
+# Dependencies and generated output
+node_modules/
+dist/
+.astro/
+.sites-runtime/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large, private, temporary, or local-only source material
+materials-local/*
+!materials-local/README.md
+
+# Local logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

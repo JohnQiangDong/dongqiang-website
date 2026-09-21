@@ -1,0 +1,28 @@
+---
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const pathWithinSite = Astro.url.pathname.slice(Math.max(0, base.length - 1));
+const currentPath = pathWithinSite.replace(/\/$/, '') || '/';
+const links = [
+  ['Home', '/'],
+  ['Research', '/research'],
+  ['Projects', '/projects'],
+  ['Publications', '/publications'],
+  ['Journey', '/journey'],
+  ['About', '/about'],
+  ['CV', '/cv'],
+];
+const toHref = (path: string) => `${base}${path === '/' ? '' : path.slice(1)}`;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-name" href={toHref('/')} aria-label="Dong Qiang — home">Dong Qiang</a>
+    <nav aria-label="Primary navigation">
+      <ul>
+        {links.map(([label, href]) => (
+          <li><a href={toHref(href)} aria-current={currentPath === href ? 'page' : undefined}>{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
