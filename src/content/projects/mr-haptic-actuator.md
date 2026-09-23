@@ -29,6 +29,15 @@ gallery:
 links:
   paper: https://arxiv.org/abs/2608.19635
   arxiv: https://arxiv.org/abs/2608.19635
+updates:
+  - date: 2026-09-23
+    title: Drug-infusion hardware-in-the-loop demonstration
+    description: A model-derived intracerebral infusion pressure trajectory is converted into a torque reference and rendered by the physical MR haptic actuator.
+    media:
+      - type: video
+        source: /media/projects/mr-haptic-actuator/mr-actuator-drug-infusion-hardware-in-loop-demo.mp4
+        poster: /media/projects/mr-haptic-actuator/mr-actuator-drug-infusion-hardware-in-loop-demo-poster.webp
+        alt: Hardware-in-the-loop demonstration showing a brain drug-infusion pressure interface, live torque traces, and the operating MR haptic actuator.
 ---
 
 This project develops a compact rotary haptic actuator using magnetorheological fluid to turn an electrical command into adjustable resistive torque. The work treats the mechanism, magnetic sealing, drive electronics, experimental characterisation, and real-time control as one integrated system.

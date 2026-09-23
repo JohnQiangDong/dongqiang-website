@@ -5,7 +5,7 @@ order: 1
 stage: established-foundation
 summary: Developing compact magnetorheological interfaces that render stable, controllable physical feedback for high-precision human–robot interaction.
 question: How can field-responsive materials, mechanism design, sensing, and adaptive control be combined to deliver transparent and reliable haptic feedback?
-currentEvidence: The current experimental foundation is a magnetically self-sealed rotary MR actuator with characterised PWM excitation, model-based torque control, biomechanics-inspired reference tracking, and sustained-operation testing, reported in the linked preprint.
+currentEvidence: The current experimental foundation is a magnetically self-sealed rotary MR actuator with characterised PWM excitation, model-based torque control, biomechanics-inspired reference tracking, and sustained-operation testing, reported in the linked preprint. A subsequent hardware-in-the-loop demonstration connects an intracerebral drug-infusion pressure model to the physical actuator for real-time torque rendering.
 agenda:
   - Refine compact MR interfaces through magnetic-circuit, geometry, rheological, and tribological design.
   - Develop adaptive signal scaling, filtering, estimation, and robust force-tracking control.

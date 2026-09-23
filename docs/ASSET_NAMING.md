@@ -56,6 +56,7 @@ Names below are relative to each project's `materials/<project>/photos/` or `vid
 | mr-haptic-actuator | experiment-setup.png | mr-actuator-experiment-setup.webp | Experimental platform |
 | mr-haptic-actuator | thermal-stability.png | mr-actuator-thermal-stability.webp | Sustained-operation result |
 | mr-haptic-actuator | biomechanical-reference-validation.png | mr-actuator-biomechanical-reference-validation.webp | Model-derived reference validation |
+| mr-haptic-actuator | Hardware-in-the-loop Demo.mp4 | mr-actuator-drug-infusion-hardware-in-loop-demo.mp4 | Drug-infusion pressure-feedback HIL demo / matching `-poster.webp`; 4K original retained in `materials-local/` |
 
 The two SO101 originals were moved from `materials/remote-control-demo/videos/` to `materials/haptic-robot-learning/videos/` without renaming or modifying their contents. The source-to-public mapping above preserves their meaning. Only the reviewed public derivatives are committed for publication; originals remain local.
 

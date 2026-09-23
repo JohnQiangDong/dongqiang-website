@@ -30,7 +30,7 @@ What should a visitor remember after 30 seconds?
 - [x] Hero image — device architecture and operating principle
 - [ ] Hero video
 - [x] System image or diagram — experimental platform
-- [ ] Demo video
+- [x] Demo video — drug-infusion hardware-in-the-loop pressure-feedback demonstration
 - [x] Result figures — thermal stability and biomechanics-derived reference validation
 - [ ] Behind-the-scenes images
 
@@ -46,3 +46,5 @@ What should a visitor remember after 30 seconds?
 ## Selected source figures
 
 The four PNG files in `figures/` are reviewed and descriptively renamed copies from the supplied submission archive. Author portraits, template files, bibliography files, and the full submission source remain local and are not published by the website.
+
+The 4K source video for the drug-infusion hardware-in-the-loop demonstration remains in `materials-local/mr-haptic-actuator/videos/`. The published derivative is muted, reduced to 1080p/30 fps, and paired with a reviewed poster frame. The visible interface contains the virtual infusion state, pressure-derived haptic command, measured torque trace, and actuator hardware; no clinical result is claimed.
