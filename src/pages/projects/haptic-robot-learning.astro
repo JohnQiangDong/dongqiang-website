@@ -10,10 +10,10 @@ const project = entry.data;
 <BaseLayout title={project.title} description={project.summary!}>
   <article class="page-shell robot-page">
     <a href={siteUrl('/projects/')} class="back">← All projects</a>
-    <header><p class="eyebrow">Research / Early-stage imitation learning</p><h1>{project.title}</h1><p class="intro">{project.summary}</p><ul class="tags">{project.tags.map(tag => <li>{tag}</li>)}</ul></header>
+    <header><p class="eyebrow">Research / Robot learning</p><h1>{project.title}</h1><p class="intro">{project.summary}</p><ul class="tags">{project.tags.map(tag => <li>{tag}</li>)}</ul></header>
     <section class="overview"><h2>Current public record</h2><div><Content /></div></section>
     <section aria-labelledby="demonstrations"><h2 id="demonstrations">Two views of the setup</h2><div class="videos">{project.demonstrations.map(demo => <DemoVideo {...demo} />)}</div><p class="media-note">Silent demonstration clips. Use the player controls to play, pause, or view fullscreen.</p></section>
-    <footer class="project-footer"><a href={siteUrl('/projects/')}>← Back to projects</a><span>SO101 · Teleoperation · Early stage</span></footer>
+    <footer class="project-footer"><a href={siteUrl('/projects/')}>← Back to projects</a><span>SO101 · Teleoperation · Demonstration</span></footer>
   </article>
 </BaseLayout>
 <style>

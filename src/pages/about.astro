@@ -1,8 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/common/PageIntro.astro';
+import { siteUrl } from '../utils/urls';
+
+const minYuProfile = 'https://profiles.imperial.ac.uk/m.yu14';
+const thomasReddyhoffProfile = 'https://profiles.imperial.ac.uk/t.reddyhoff';
 ---
 
-<BaseLayout title="About" description="About Dong Qiang.">
-  <PageIntro eyebrow="About" title="Background and practice" intro="This page will contain a verified biography, education, selected experience, teaching, contact details, and professional links." note="Personal and professional details have intentionally not been invented for this foundation." />
+<BaseLayout title="About" description="About Dong Qiang's research in mechanical engineering, haptics, and robotics.">
+  <article class="page-shell about-page">
+    <header>
+      <p class="eyebrow">About</p>
+      <h1>Mechanical engineering, haptics, and robotics</h1>
+    </header>
+
+    <section class="biography" aria-labelledby="biography-title">
+      <h2 id="biography-title">Biography</h2>
+      <div>
+        <p>I am a PhD researcher in the Department of Mechanical Engineering at Imperial College London. My research focuses on haptic interfaces and intelligent physical systems, with current work spanning magnetorheological actuation, mechatronic system design, real-time control, and robot imitation learning.</p>
+        <p>My work combines physical system development with modelling and experimentation. I am particularly interested in how smart materials, sensing, control, and robotics can be integrated to create interfaces that make physical interaction more measurable and programmable.</p>
+        <p>Before beginning my PhD, I completed an MEng in Mechanical Engineering at Imperial College London with First Class Honours. My interest in robotics and mechatronic systems began earlier through VEX Robotics, where I gained practical experience in robot design, fabrication, programming, and competition.</p>
+      </div>
+    </section>
+
+    <section class="supervision" aria-labelledby="supervision-title">
+      <div><p class="eyebrow">PhD</p><h2 id="supervision-title">Supervision</h2></div>
+      <div class="supervisor-grid">
+        <article>
+          <p class="role">Supervisor</p>
+          <h3><a href={minYuProfile} target="_blank" rel="noopener noreferrer">Dr Min Yu ↗</a></h3>
+          <p>Department of Mechanical Engineering<br />Imperial College London</p>
+        </article>
+        <article>
+          <p class="role">Co-supervisor</p>
+          <h3><a href={thomasReddyhoffProfile} target="_blank" rel="noopener noreferrer">Dr Thomas Reddyhoff ↗</a></h3>
+          <p>Department of Mechanical Engineering<br />Imperial College London</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="profile-links" aria-label="More about Dong Qiang">
+      <a href={siteUrl('/research/')}>Research directions ↗</a>
+      <a href={siteUrl('/publications/')}>Publications ↗</a>
+      <a href={siteUrl('/cv/')}>Curriculum vitae ↗</a>
+      <a href="mailto:john.qiang21@imperial.ac.uk">Email ↗</a>
+    </nav>
+  </article>
 </BaseLayout>
+
+<style>
+  .about-page {padding-top:clamp(3.5rem,7vw,6rem)}header {padding-bottom:3rem;border-bottom:1px solid var(--line)}header h1 {max-width:18ch}.biography {display:grid;grid-template-columns:12rem minmax(0,44rem);gap:clamp(2rem,6vw,5rem);padding:4rem 0}.biography h2,.supervision h2 {margin:0;font-size:1rem;letter-spacing:.02em}.biography div {color:var(--muted);font-size:1.08rem}.biography p:first-child {margin-top:0;color:var(--ink)}.supervision {display:grid;grid-template-columns:12rem 1fr;gap:clamp(2rem,6vw,5rem);padding:3rem 0;border-block:1px solid var(--line)}.supervisor-grid {display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}.supervisor-grid article {padding:2rem;background:var(--soft)}.role {margin:0;color:var(--accent);font-size:.76rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase}.supervisor-grid h3 {margin:.55rem 0;font-size:1.35rem}.supervisor-grid h3 a {color:var(--ink);text-decoration:none}.supervisor-grid article>p:last-child {color:var(--muted);font-size:.92rem}.profile-links {display:flex;flex-wrap:wrap;gap:.8rem 2rem;padding:2.5rem 0;font-size:.92rem}@media(max-width:700px){.biography,.supervision {grid-template-columns:1fr}.supervisor-grid {grid-template-columns:1fr}}
+</style>

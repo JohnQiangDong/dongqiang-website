@@ -9,19 +9,19 @@ const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
 
 <BaseLayout title="Projects" description="Research, robotics, engineering, and prototype projects by Dong Qiang.">
   <section class="page-shell">
-    <p class="eyebrow">Projects</p><h1>Living technical stories</h1>
-    <p class="intro">Research, robotics, and engineering work, with room to evolve.</p>
-    <h2>Featured Research</h2>
+    <p class="eyebrow">Projects</p><h1>Selected projects</h1>
+    <p class="intro">Research, robotics, and engineering work across haptic systems, robot learning, and earlier competition robotics.</p>
+    <h2>Featured research</h2>
     <a class="project-link" href={siteUrl('/projects/mr-haptic-actuator/')}>
       <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
       <div><p class="eyebrow">MR fluids / Torque control</p><h3>{actuator.title} ↗</h3><p>{actuator.summary}</p></div>
     </a>
-    <h2>Ongoing Research</h2>
+    <h2>Ongoing research</h2>
     <a class="project-link" href={siteUrl('/projects/haptic-robot-learning/')}>
       <img src={siteUrl(robot.hero!.poster!)} alt={robot.hero!.alt} width="1280" height="720" />
-      <div><p class="eyebrow">SO101 / Early stage</p><h3>{robot.title} ↗</h3><p>{robot.summary}</p></div>
+      <div><p class="eyebrow">SO101 / Teleoperation</p><h3>{robot.title} ↗</h3><p>{robot.summary}</p></div>
     </a>
-    <h2>Earlier Work</h2>
+    <h2>Earlier work</h2>
     <a class="project-link" href={siteUrl('/projects/vex-robotics/')}>
       <img src={siteUrl(vex.hero!.source)} alt={vex.hero!.alt} width="1600" height="900" />
       <div><p class="eyebrow">High-school robotics</p><h3>{vex.title} ↗</h3><p>{vex.summary}</p></div>

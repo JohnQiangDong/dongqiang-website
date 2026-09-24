@@ -3,12 +3,12 @@ title: Robot Imitation Learning
 shortTitle: Robot Imitation Learning
 slug: haptic-robot-learning
 type: robotics
-summary: "An early-stage robot imitation learning research line, currently documented through two SO101 leader–follower teleoperation demonstrations."
-subtitle: An evolving research line beginning with SO101 teleoperation and demonstration collection.
+summary: Exploring how physical interaction information and haptic feedback can contribute to human demonstration and contact-rich robot learning.
+subtitle: An evolving research direction beginning with SO101 leader–follower teleoperation.
 status: ongoing
 featured: true
 order: 2
-tags: [SO101, Teleoperation, Imitation Learning, Early Stage]
+tags: [SO101, Teleoperation, Imitation Learning, Leader–Follower]
 hero:
   type: video
   source: /media/projects/haptic-robot-learning/so101-teleoperation-side-02.mp4
@@ -31,6 +31,6 @@ demonstrations:
     height: 720
 ---
 
-This research line is at an early stage. Its current public record consists of two SO101 demonstrations showing manual operation of a leader–follower arm setup: one arm is guided by hand while the other follows its motion.
+This project is at an early stage. Its current public record consists of two SO101 demonstrations showing manual operation of a leader–follower arm setup: one arm is guided by hand while the other follows its motion.
 
-The clips establish the teleoperation and demonstration-capture starting point. They do not yet demonstrate a trained imitation-learning policy, learning results, or haptic feedback.
+The clips document the teleoperation platform that will support future work on demonstration collection and haptic-guided robot learning. No trained imitation-learning model or learning result is presented at this stage.

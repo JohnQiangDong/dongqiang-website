@@ -12,6 +12,7 @@ The source CV is retained in `materials-local/shared/cv/` because it contains tw
 - Shanghai Jiao Tong University Rongchang Cup AI Competition teaching-assistant experience, June to August 2023.
 - VEX team leadership and the competition results stated in the supplied CV.
 - Professional Imperial College email address.
+- PhD supervision by Dr Min Yu and co-supervision by Dr Thomas Reddyhoff, with links to their official Imperial College London profiles, as confirmed by the user for the public release.
 
 ## Excluded or replaced
 

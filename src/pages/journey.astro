@@ -1,8 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/common/PageIntro.astro';
+import { siteUrl } from '../utils/urls';
 ---
 
-<BaseLayout title="Journey" description="Dong Qiang's technical and engineering journey.">
-  <PageIntro eyebrow="Journey" title="A technical trajectory" intro="This page will connect earlier engineering work with later research directions through a visual timeline." note="The final chronology will be written only after dates and supporting material are reviewed." />
+<BaseLayout title="Journey" description="The development of Dong Qiang's engineering interests from robotics to haptics and robot learning.">
+  <article class="page-shell journey-page">
+    <header>
+      <p class="eyebrow">Journey</p>
+      <h1>From building robots to studying physical interaction</h1>
+      <p class="intro">Four stages in the development of my engineering interests and current research.</p>
+    </header>
+
+    <ol class="timeline">
+      <li>
+        <div class="stage"><span>01</span><time>2018—2020</time></div>
+        <article><p class="eyebrow">Starting with robotics</p><h2>Learning through complete physical systems</h2><p>My interest in building physical systems began through VEX Robotics in high school. Working across mechanical design, fabrication, programming, testing, and competition gave me an early introduction to the full cycle of developing a robotic system—from an initial mechanism to a machine that had to perform reliably under real constraints.</p><a href={siteUrl('/projects/vex-robotics/')}>VEX Robotics project ↗</a></article>
+      </li>
+      <li>
+        <div class="stage"><span>02</span><time>2021—2025</time></div>
+        <article><p class="eyebrow">Mechanical Engineering at Imperial</p><h2>Broadening the engineering foundation</h2><p>I studied Mechanical Engineering at Imperial College London, graduating with First Class Honours from the MEng programme. The degree broadened my foundation across mechanics, mechatronics, control, robotics, computation, and experimental engineering, while progressively shifting my interests towards intelligent physical systems.</p></article>
+      </li>
+      <li>
+        <div class="stage"><span>03</span><time>2025—Present</time></div>
+        <article><p class="eyebrow">From smart interfaces to haptics</p><h2>Making physical feedback programmable</h2><p>I began my PhD in Mechanical Engineering at Imperial College London in 2025. My current work centres on magnetorheological haptic interfaces, combining smart materials, mechanism design, experimental characterisation, sensing, and real-time control to create compact systems for programmable physical feedback.</p><a href={siteUrl('/projects/mr-haptic-actuator/')}>MR Haptic Actuator project ↗</a></article>
+      </li>
+      <li>
+        <div class="stage"><span>04</span><time>Current direction</time></div>
+        <article><p class="eyebrow">Towards robot learning</p><h2>Connecting interaction with demonstration</h2><p>My research is expanding from haptic actuation towards human–robot demonstration and robot learning. The present SO101 leader–follower platform provides an experimental starting point for studying how physical interaction and haptic feedback may contribute to future contact-rich robot learning.</p><a href={siteUrl('/projects/haptic-robot-learning/')}>Robot Imitation Learning project ↗</a></article>
+      </li>
+    </ol>
+
+    <p class="closing">Across these stages, the recurring theme has been the same: designing physical systems, understanding how they interact with people and their environment, and making those interactions increasingly measurable, controllable, and intelligent.</p>
+  </article>
 </BaseLayout>
+
+<style>
+  .journey-page {padding-top:clamp(3.5rem,7vw,6rem)}header {max-width:60rem;padding-bottom:4rem;border-bottom:1px solid var(--line)}header h1 {max-width:18ch}.timeline {list-style:none;margin:0;padding:0}.timeline>li {display:grid;grid-template-columns:12rem 1fr;gap:clamp(2rem,6vw,5rem);padding:4rem 0;border-bottom:1px solid var(--line)}.stage {display:flex;flex-direction:column;gap:.6rem}.stage span {color:var(--accent);font-size:.78rem;font-weight:760;letter-spacing:.1em}.stage time {color:var(--muted);font-size:.92rem;font-variant-numeric:tabular-nums}.timeline article {max-width:48rem}.timeline h2 {margin:.25rem 0 1rem;font-size:clamp(1.65rem,3vw,2.5rem);line-height:1.2;letter-spacing:-.035em}.timeline article>p:not(.eyebrow) {color:var(--muted);font-size:1.04rem}.timeline article>a {display:inline-block;margin-top:.75rem;font-size:.92rem}.closing {max-width:56rem;margin:4rem 0 0;font-size:clamp(1.2rem,2.3vw,1.65rem);line-height:1.55;letter-spacing:-.02em}@media(max-width:640px){header {padding-bottom:3rem}.timeline>li {grid-template-columns:1fr;gap:1.25rem;padding:3rem 0}.stage {flex-direction:row;justify-content:space-between}}
+</style>

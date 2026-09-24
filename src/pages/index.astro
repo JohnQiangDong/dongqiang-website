@@ -6,7 +6,7 @@ import { siteUrl } from '../utils/urls';
 const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
 const vex = (await getEntry('projects', 'vex-robotics'))!.data;
 const robot = (await getEntry('projects', 'haptic-robot-learning'))!.data;
-const firstAuthorPaper = (await getEntry('publications', 'magnetically-self-sealed-mr-haptic-actuator'))!.data;
+const recentPaper = (await getEntry('publications', 'magnetically-self-sealed-mr-haptic-actuator'))!.data;
 ---
 
 <BaseLayout title="Home" description="Dong Qiang researches MR haptic feedback and robot imitation learning at Imperial College London.">
@@ -19,14 +19,14 @@ const firstAuthorPaper = (await getEntry('publications', 'magnetically-self-seal
         <div class="hero-links"><a href={siteUrl('/research/')}>Research directions ↗</a><a href={siteUrl('/publications/')}>Publications ↗</a><a href={siteUrl('/cv/')}>CV ↗</a></div>
       </div>
       <div class="focus-list" aria-label="Research focus">
-        <p class="label">Current research lines</p>
+        <p class="label">Current research directions</p>
         <a href={siteUrl('/research/#mr-haptic-feedback')}><span>01</span>MR Haptic Feedback</a>
         <a href={siteUrl('/research/#robot-imitation-learning')}><span>02</span>Robot Imitation Learning</a>
       </div>
     </section>
 
     <section class="page-shell featured" aria-labelledby="featured-title">
-      <div class="section-heading"><div><p class="eyebrow">Featured work</p><h2 id="featured-title">Projects as living technical stories</h2></div><a href={siteUrl('/projects/')}>All projects ↗</a></div>
+      <div class="section-heading"><div><p class="eyebrow">Featured work</p><h2 id="featured-title">Selected research and engineering projects</h2></div><a href={siteUrl('/projects/')}>All projects ↗</a></div>
 
       <a class="lead-project" href={siteUrl('/projects/mr-haptic-actuator/')}>
         <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
@@ -40,19 +40,19 @@ const firstAuthorPaper = (await getEntry('publications', 'magnetically-self-seal
         </a>
         <a class="project-card" href={siteUrl('/projects/haptic-robot-learning/')}>
           <img src={siteUrl(robot.hero!.poster!)} alt={robot.hero!.alt} width="1280" height="720" loading="lazy" />
-          <div><p class="project-index">03 / Early-stage research</p><h3>{robot.title}</h3><p>{robot.summary}</p><span>Two SO101 demonstrations ↗</span></div>
+          <div><p class="project-index">03 / Emerging direction</p><h3>{robot.title}</h3><p>{robot.summary}</p><span>Two SO101 demonstrations ↗</span></div>
         </a>
       </div>
     </section>
 
     <section class="page-shell research-summary">
-      <div><p class="eyebrow">Research agenda</p><h2>Rendering interaction.<br />Learning from demonstration.</h2></div>
-      <div class="research-copy"><p>The research programme connects two scales: designing physical interfaces that make interaction forces perceivable, and studying how those signals can shape human demonstrations and robot learning.</p><a href={siteUrl('/research/')}>Read the research questions and planned agenda ↗</a></div>
+      <div><p class="eyebrow">Research directions</p><h2>Rendering interaction.<br />Learning from demonstration.</h2></div>
+      <div class="research-copy"><p>The research programme connects two scales: designing physical interfaces that make interaction forces perceivable, and exploring how those signals may contribute to human demonstration and robot learning.</p><a href={siteUrl('/research/')}>Read the research directions ↗</a></div>
     </section>
 
     <section class="page-shell publication-highlight">
-      <div><p class="eyebrow">First-author preprint</p><h2>{firstAuthorPaper.title}</h2><p>{firstAuthorPaper.venue}, {firstAuthorPaper.articleNumber} · {firstAuthorPaper.year}</p></div>
-      <div class="publication-actions"><a href={firstAuthorPaper.paper} target="_blank" rel="noopener noreferrer">Read on arXiv ↗</a><a href={siteUrl('/publications/')}>All publications ↗</a></div>
+      <div><p class="eyebrow">Recent preprint</p><h2>{recentPaper.title}</h2><p>{recentPaper.venue}, {recentPaper.articleNumber} · {recentPaper.year}</p></div>
+      <div class="publication-actions"><a href={recentPaper.paper} target="_blank" rel="noopener noreferrer">Read on arXiv ↗</a><a href={siteUrl('/publications/')}>All publications ↗</a></div>
     </section>
 
     <section class="page-shell profile-strip">

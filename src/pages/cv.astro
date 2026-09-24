@@ -8,6 +8,8 @@ const publications = (await getCollection('publications')).sort((a, b) =>
   (b.data.year ?? 0) - (a.data.year ?? 0) ||
   (a.data.order ?? 999) - (b.data.order ?? 999)
 );
+const minYuProfile = 'https://profiles.imperial.ac.uk/m.yu14';
+const thomasReddyhoffProfile = 'https://profiles.imperial.ac.uk/t.reddyhoff';
 ---
 
 <BaseLayout title="CV" description="Education, research, experience, technical skills, and selected activities of Dong Qiang.">
@@ -18,15 +20,15 @@ const publications = (await getCollection('publications')).sort((a, b) =>
     </header>
 
     <section class="cv-section" aria-labelledby="education"><h2 id="education">Education</h2><div class="records">
-      <article><p class="date">Sep 2025—Present</p><div><h3>PhD in Mechanical Engineering</h3><p class="institution">Imperial College London</p><p>China Scholarship Council scholarship. Research spans magnetorheological fluids, haptic feedback, adaptive control, biomechanical modelling, and robot learning.</p></div></article>
+      <article><p class="date">Sep 2025—Present</p><div><h3>PhD in Mechanical Engineering</h3><p class="institution">Imperial College London</p><p>China Scholarship Council scholarship. Research focuses on magnetorheological haptic feedback, mechatronic systems, real-time control, and robot learning.</p><p class="supervision-line">Supervisor: <a href={minYuProfile} target="_blank" rel="noopener noreferrer">Dr Min Yu ↗</a> · Co-supervisor: <a href={thomasReddyhoffProfile} target="_blank" rel="noopener noreferrer">Dr Thomas Reddyhoff ↗</a></p></div></article>
       <article><p class="date">Oct 2021—Jun 2025</p><div><h3>MEng Mechanical Engineering · First Class Honours</h3><p class="institution">Imperial College London</p><p>Coursework included robotics, machine learning, mechatronics, embedded systems, fluid mechanics, dynamics, thermodynamics, statistics, CFD, and stress analysis.</p></div></article>
     </div></section>
 
     <section class="cv-section" aria-labelledby="research-profile"><h2 id="research-profile">Research profile</h2><div class="skills-grid">
-      <article><h3>Research directions</h3><p>MR haptic feedback; robot imitation learning; mechatronics; adaptive and robust control; biomechanical modelling.</p></article>
+      <article><h3>Research directions</h3><p>MR haptic feedback; robot imitation learning; mechatronics; adaptive and robust control.</p></article>
       <article><h3>Methods</h3><p>Nonlinear system modelling; electromagnetic field modelling; experimental characterisation; control implementation; machine learning.</p></article>
       <article><h3>Tools</h3><p>Python, Embedded C, MATLAB, Simulink, LabVIEW, SolidWorks, Ansys Maxwell, and STAR-CCM+.</p></article>
-    </div><a class="section-link" href={siteUrl('/research/')}>Research questions and current agenda ↗</a></section>
+    </div><a class="section-link" href={siteUrl('/research/')}>Research directions ↗</a></section>
 
     <section class="cv-section" aria-labelledby="experience"><h2 id="experience">Experience</h2><div class="records">
       <article><p class="date">Aug—Sep 2024</p><div><h3>Intern · Safety Engineering and Virtual Technology Department</h3><p class="institution">SAIC Motor</p><p>Benchmarked safety systems including airbags and impact sensors, built an impact-test database, and developed a Python linear-regression model for predicting sensor damage in future tests.</p></div></article>
@@ -41,10 +43,9 @@ const publications = (await getCollection('publications')).sort((a, b) =>
       {publications.map((publication) => <li><p>{publication.data.title}</p><span>{publication.data.venue}{publication.data.year ? ` · ${publication.data.year}` : ''}</span></li>)}
     </ol></section>
 
-    <p class="privacy-note">This public CV omits private telephone numbers. Publication metadata is drawn from the website's verified publication records.</p>
   </article>
 </BaseLayout>
 
 <style>
-  .cv-page {padding-top:clamp(3.5rem,7vw,6rem)}header {display:flex;align-items:end;justify-content:space-between;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}header h1 {max-width:none}address {font-style:normal;text-align:right}address p {margin:0;color:var(--muted)}.cv-section {display:grid;grid-template-columns:12rem 1fr;gap:clamp(2rem,5vw,4rem);padding:3rem 0;border-bottom:1px solid var(--line)}.cv-section>h2,.section-heading h2 {margin:0;font-size:1rem;letter-spacing:.02em}.records {display:grid;gap:2.2rem}.records article {display:grid;grid-template-columns:9rem 1fr;gap:2rem}.date {margin:0;color:var(--accent);font-size:.82rem;font-weight:700}.records h3,.skills-grid h3 {margin:0;font-size:1.2rem;line-height:1.35}.institution {margin:.15rem 0;color:var(--ink);font-weight:650}.records article div>p:not(.institution),.skills-grid p {color:var(--muted)}.records ul {color:var(--muted);padding-left:1.2rem}.skills-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}.skills-grid article {padding:1.5rem;background:var(--paper)}.section-link {grid-column:2;margin-top:-1.4rem;font-size:.9rem}.section-heading {display:flex;align-items:start;justify-content:space-between;gap:2rem}.publication-list {margin:0;padding-left:1.3rem}.publication-list li {padding:0 0 1.2rem 1rem}.publication-list p {margin:0;font-weight:650;line-height:1.45}.publication-list span {color:var(--muted);font-size:.88rem}.privacy-note {margin:3rem 0 0;color:var(--muted);font-size:.82rem}@media(max-width:760px){header {align-items:start;flex-direction:column}address {text-align:left}.cv-section {grid-template-columns:1fr;gap:1.5rem}.records article {grid-template-columns:1fr;gap:.4rem}.skills-grid {grid-template-columns:1fr}.section-link {grid-column:auto;margin-top:0}.section-heading {align-items:start;flex-direction:column;gap:.5rem}}
+  .cv-page {padding-top:clamp(3.5rem,7vw,6rem)}header {display:flex;align-items:end;justify-content:space-between;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}header h1 {max-width:none}address {font-style:normal;text-align:right}address p {margin:0;color:var(--muted)}.cv-section {display:grid;grid-template-columns:12rem 1fr;gap:clamp(2rem,5vw,4rem);padding:3rem 0;border-bottom:1px solid var(--line)}.cv-section>h2,.section-heading h2 {margin:0;font-size:1rem;letter-spacing:.02em}.records {display:grid;gap:2.2rem}.records article {display:grid;grid-template-columns:9rem 1fr;gap:2rem}.date {margin:0;color:var(--accent);font-size:.82rem;font-weight:700}.records h3,.skills-grid h3 {margin:0;font-size:1.2rem;line-height:1.35}.institution {margin:.15rem 0;color:var(--ink);font-weight:650}.records article div>p:not(.institution),.skills-grid p {color:var(--muted)}.records .supervision-line {font-size:.9rem}.records ul {color:var(--muted);padding-left:1.2rem}.skills-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}.skills-grid article {padding:1.5rem;background:var(--paper)}.section-link {grid-column:2;margin-top:-1.4rem;font-size:.9rem}.section-heading {display:flex;align-items:start;justify-content:space-between;gap:2rem}.publication-list {margin:0;padding-left:1.3rem}.publication-list li {padding:0 0 1.2rem 1rem}.publication-list p {margin:0;font-weight:650;line-height:1.45}.publication-list span {color:var(--muted);font-size:.88rem}@media(max-width:760px){header {align-items:start;flex-direction:column}address {text-align:left}.cv-section {grid-template-columns:1fr;gap:1.5rem}.records article {grid-template-columns:1fr;gap:.4rem}.skills-grid {grid-template-columns:1fr}.section-link {grid-column:auto;margin-top:0}.section-heading {align-items:start;flex-direction:column;gap:.5rem}}
 </style>

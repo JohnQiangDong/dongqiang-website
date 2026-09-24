@@ -25,19 +25,10 @@ gallery:
     caption: During the reported 1.5-hour test, periodic torque tracking was maintained while the housing temperature rise near the coil approached 2.5 °C.
   - source: /media/projects/mr-haptic-actuator/mr-actuator-biomechanical-reference-validation.webp
     alt: Model-to-haptic signal chain and measured torque tracking for three biomechanics-derived reference profiles.
-    caption: Model-derived pressure profiles were converted to torque references to test noncanonical haptic trajectories at three feedback levels.
+    caption: Model-derived reference profiles were converted to torque commands to test noncanonical haptic trajectories at three feedback levels.
 links:
   paper: https://arxiv.org/abs/2608.19635
   arxiv: https://arxiv.org/abs/2608.19635
-updates:
-  - date: 2026-09-23
-    title: Drug-infusion hardware-in-the-loop demonstration
-    description: A model-derived intracerebral infusion pressure trajectory is converted into a torque reference and rendered by the physical MR haptic actuator.
-    media:
-      - type: video
-        source: /media/projects/mr-haptic-actuator/mr-actuator-drug-infusion-hardware-in-loop-demo.mp4
-        poster: /media/projects/mr-haptic-actuator/mr-actuator-drug-infusion-hardware-in-loop-demo-poster.webp
-        alt: Hardware-in-the-loop demonstration showing a brain drug-infusion pressure interface, live torque traces, and the operating MR haptic actuator.
 ---
 
 This project develops a compact rotary haptic actuator using magnetorheological fluid to turn an electrical command into adjustable resistive torque. The work treats the mechanism, magnetic sealing, drive electronics, experimental characterisation, and real-time control as one integrated system.
