@@ -8,6 +8,8 @@ const publication = (await getEntry('publications', 'magnetically-self-sealed-mr
 const { Content } = await render(entry);
 const project = entry.data;
 const [setup, thermal, biomechanics] = project.gallery;
+const hilUpdate = project.updates.find((update) => update.title === 'Drug-infusion hardware-in-the-loop demonstration')!;
+const hilVideo = hilUpdate.media![0];
 ---
 
 <BaseLayout title={project.title} description={project.summary!}>
@@ -20,6 +22,17 @@ const [setup, thermal, biomechanics] = project.gallery;
       <p class="intro">{project.subtitle}</p>
       <ul class="tags">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
     </header>
+
+    <section class="system-demo" aria-labelledby="system-demo-title">
+      <p class="eyebrow">System demonstration</p>
+      <h2 id="system-demo-title">From simulated injection pressure to physical feedback</h2>
+      <p class="demo-intro">{hilUpdate.description}</p>
+      <video controls preload="metadata" poster={siteUrl(hilVideo.poster!)} playsinline aria-label={hilVideo.alt} aria-describedby="system-demo-caption">
+        <source src={siteUrl(hilVideo.source)} type="video/mp4" />
+        Your browser does not support embedded video. <a href={siteUrl(hilVideo.source)}>Open the demonstration video</a>.
+      </video>
+      <p class="demo-caption" id="system-demo-caption">The interface shows the simulated infusion state and pressure-derived torque command alongside the measured actuator torque. Using Tian Yuan and coauthors' brain interstitial-transport model, the demonstration connects a virtual pressure profile to the physical MR actuator. This is an engineering demonstration, not a clinical validation. <a href="#model-reference">Model reference ↓</a></p>
+    </section>
 
     <figure class="hero">
       <img src={siteUrl(project.hero!.source)} alt={project.hero!.alt} width="1800" height="1903" fetchpriority="high" />
@@ -79,11 +92,19 @@ const [setup, thermal, biomechanics] = project.gallery;
       <a href={publication.data.paper} target="_blank" rel="noopener noreferrer">Read the preprint on arXiv ↗</a>
     </section>
 
+    <section class="references" aria-labelledby="model-reference">
+      <p class="eyebrow">Reference</p>
+      <h2 id="model-reference">Biomechanical model used in the demonstration</h2>
+      <p>T. Yuan, N. Pecco, W. Zhan, S. Galvan, R. Secoli, M. Riva, L. Bello, A. Falini, F. Rodriguez y Baena, A. Castellano, and D. Dini, “Decoding Brain Interstitial Transport In Vivo: A Fully Validated Bottom-Up Mechanistic Prediction Framework,” <em>bioRxiv</em>, 2025.</p>
+      <a href="https://doi.org/10.1101/2025.03.22.643151" target="_blank" rel="noopener noreferrer">doi:10.1101/2025.03.22.643151 ↗</a>
+    </section>
+
     <footer class="project-footer"><a href={siteUrl('/projects/')}>← Back to projects</a><span>MR fluids · Haptics · Control</span></footer>
   </article>
 </BaseLayout>
 
 <style>
+  .system-demo {padding-bottom:3rem;margin-bottom:3rem;border-bottom:1px solid var(--line)}.system-demo h2 {max-width:30ch}.demo-intro {max-width:52rem;color:var(--muted)}.system-demo video {display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0b0d0e;margin-top:1.5rem}.demo-caption {max-width:58rem;margin:1rem 0 0;color:var(--muted);font-size:.9rem}.references {max-width:58rem;margin-top:3rem}.references h2 {font-size:1.25rem;letter-spacing:-.015em}.references p:not(.eyebrow) {color:var(--muted);font-size:.9rem;line-height:1.65}
   .mr-page {padding-top:3rem}.back {font-size:.9rem} header {margin:3rem 0} h1 {font-size:clamp(3rem,8vw,6.5rem);max-width:14ch}.tags {list-style:none;display:flex;gap:.7rem 1.5rem;flex-wrap:wrap;padding:1rem 0;border-block:1px solid var(--line);margin-top:2rem;font-size:.9rem;color:var(--muted)}
   figure {margin:0} img {display:block;width:100%;height:auto;background:var(--soft)}figcaption {margin-top:.7rem;color:var(--muted);font-size:.88rem}.hero {max-width:62rem;margin-inline:auto}.hero img {max-height:58rem;object-fit:contain}
   h2 {font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.16;letter-spacing:-.035em;margin:0}.split {display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(2rem,6vw,5rem)}.overview,.control {padding:5rem 0}.body-copy,.control>div:last-child {color:var(--muted);font-size:1.05rem}.body-copy :global(p),.control p {margin-top:0}

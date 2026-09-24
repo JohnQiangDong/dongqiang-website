@@ -30,7 +30,7 @@ What should a visitor remember after 30 seconds?
 - [x] Hero image — device architecture and operating principle
 - [ ] Hero video
 - [x] System image or diagram — experimental platform
-- [ ] Demo video — application-specific demonstration withheld from the public release
+- [x] Demo video — hardware-in-the-loop system demonstration, restored at the user's request
 - [x] Result figures — thermal stability and biomechanics-derived reference validation
 - [ ] Behind-the-scenes images
 
@@ -47,4 +47,4 @@ What should a visitor remember after 30 seconds?
 
 The four PNG files in `figures/` are reviewed and descriptively renamed copies from the supplied submission archive. Author portraits, template files, bibliography files, and the full submission source remain local and are not published by the website.
 
-The application-specific 4K demonstration remains in `materials-local/mr-haptic-actuator/videos/`. It is intentionally withheld from the public release; the project page retains only the general model-derived reference tracking already supported by the public preprint.
+The application-specific 4K demonstration remains in `materials-local/mr-haptic-actuator/videos/`. At the user's request, the previously reviewed, optimised public video and poster are restored under their original published filenames. The system demonstration appears before the architecture figure on the project page, with the model reference retained below. The original is unchanged.
