@@ -62,6 +62,8 @@ The two SO101 originals were moved from `materials/remote-control-demo/videos/` 
 
 ## Future intake
 
+Journey reuses the existing VEX Worlds arena photograph, MR hardware-in-the-loop poster, and SO101 side-view poster from their project-owned public directories. No duplicate assets or new raw material are published for the timeline.
+
 1. Place source material in the matching project's subfolder with any helpful name.
 2. Inventory and inspect it; resolve uncertain claims before adding them to a page.
 3. Assign a stable public basename only to selected assets.
