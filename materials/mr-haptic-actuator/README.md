@@ -30,6 +30,7 @@ What should a visitor remember after 30 seconds?
 - [x] Hero image — device architecture and operating principle
 - [ ] Hero video
 - [x] System image or diagram — experimental platform
+- [x] System communication diagram — HIL signal flow and UDP links, supplied as `figures/demo.pdf`
 - [x] Demo video — hardware-in-the-loop system demonstration, restored at the user's request
 - [x] Result figures — thermal stability and biomechanics-derived reference validation
 - [ ] Behind-the-scenes images
@@ -45,6 +46,6 @@ What should a visitor remember after 30 seconds?
 
 ## Selected source figures
 
-The four PNG files in `figures/` are reviewed and descriptively renamed copies from the supplied submission archive. Author portraits, template files, bibliography files, and the full submission source remain local and are not published by the website.
+The four PNG files in `figures/` are reviewed and descriptively renamed copies from the supplied submission archive. `figures/demo.pdf` is the user-supplied HIL system communication diagram; a reviewed WebP derivative is published beside the demonstration video. Author portraits, template files, bibliography files, and the full submission source remain local and are not published by the website.
 
 The application-specific 4K demonstration remains in `materials-local/mr-haptic-actuator/videos/`. At the user's request, the previously reviewed, optimised public video and poster are restored under their original published filenames. The system demonstration appears before the architecture figure on the project page, with the model reference retained below. The original is unchanged.

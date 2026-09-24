@@ -7,10 +7,10 @@ const robot = (await getEntry('projects', 'haptic-robot-learning'))!.data;
 const actuator = (await getEntry('projects', 'mr-haptic-actuator'))!.data;
 ---
 
-<BaseLayout title="Projects" description="Research, robotics, engineering, and prototype projects by Dong Qiang.">
+<BaseLayout title="Projects & Research" description="Research and engineering projects by Dong Qiang across haptics, robot learning, and robotics.">
   <section class="page-shell">
-    <p class="eyebrow">Projects</p><h1>Selected projects</h1>
-    <p class="intro">Research, robotics, and engineering work across haptic systems, robot learning, and earlier competition robotics.</p>
+    <p class="eyebrow">Projects & Research</p><h1>Research through working systems</h1>
+    <p class="intro">Current research and engineering work, presented through implemented systems, experimental evidence, demonstrations, and publications.</p>
     <h2>Featured research</h2>
     <a class="project-link" href={siteUrl('/projects/mr-haptic-actuator/')}>
       <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />

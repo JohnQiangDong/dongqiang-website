@@ -16,17 +16,17 @@ const recentPaper = (await getEntry('publications', 'magnetically-self-sealed-mr
         <p class="eyebrow">Research · Engineering · Robotics</p>
         <h1>Dong Qiang</h1>
         <p class="intro">PhD researcher in Mechanical Engineering at Imperial College London, working across MR haptic feedback, mechatronic systems, and robot imitation learning.</p>
-        <div class="hero-links"><a href={siteUrl('/research/')}>Research directions ↗</a><a href={siteUrl('/publications/')}>Publications ↗</a><a href={siteUrl('/cv/')}>CV ↗</a></div>
+        <div class="hero-links"><a href={siteUrl('/projects/')}>Projects & Research ↗</a><a href={siteUrl('/publications/')}>Publications ↗</a><a href={siteUrl('/cv/')}>CV ↗</a></div>
       </div>
       <div class="focus-list" aria-label="Research focus">
-        <p class="label">Current research directions</p>
-        <a href={siteUrl('/research/#mr-haptic-feedback')}><span>01</span>MR Haptic Feedback</a>
-        <a href={siteUrl('/research/#robot-imitation-learning')}><span>02</span>Robot Imitation Learning</a>
+        <p class="label">Current work</p>
+        <a href={siteUrl('/projects/mr-haptic-actuator/')}><span>01</span>MR Haptic Feedback</a>
+        <a href={siteUrl('/projects/haptic-robot-learning/')}><span>02</span>Robot Imitation Learning</a>
       </div>
     </section>
 
     <section class="page-shell featured" aria-labelledby="featured-title">
-      <div class="section-heading"><div><p class="eyebrow">Featured work</p><h2 id="featured-title">Selected research and engineering projects</h2></div><a href={siteUrl('/projects/')}>All projects ↗</a></div>
+      <div class="section-heading"><div><p class="eyebrow">Featured work</p><h2 id="featured-title">Selected research and engineering projects</h2></div><a href={siteUrl('/projects/')}>Projects & Research ↗</a></div>
 
       <a class="lead-project" href={siteUrl('/projects/mr-haptic-actuator/')}>
         <img src={siteUrl(actuator.hero!.source)} alt={actuator.hero!.alt} width="1800" height="1903" />
@@ -46,8 +46,8 @@ const recentPaper = (await getEntry('publications', 'magnetically-self-sealed-mr
     </section>
 
     <section class="page-shell research-summary">
-      <div><p class="eyebrow">Research directions</p><h2>Rendering interaction.<br />Learning from demonstration.</h2></div>
-      <div class="research-copy"><p>The research programme connects two scales: designing physical interfaces that make interaction forces perceivable, and exploring how those signals may contribute to human demonstration and robot learning.</p><a href={siteUrl('/research/')}>Read the research directions ↗</a></div>
+      <div><p class="eyebrow">Research through projects</p><h2>Rendering interaction.<br />Learning from demonstration.</h2></div>
+      <div class="research-copy"><p>The published project record connects physical interfaces for controllable feedback with an emerging SO101 platform for human demonstration and robot learning.</p><a href={siteUrl('/projects/')}>Browse Projects & Research ↗</a></div>
     </section>
 
     <section class="page-shell publication-highlight">

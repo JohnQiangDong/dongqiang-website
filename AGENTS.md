@@ -29,6 +29,14 @@ When editing this repository:
 
 The required media flow is: raw source material → review and selection → optimisation and meaningful renaming → `public/media/` → website.
 
+## Public information architecture
+
+- The primary work index is `/projects/`, labelled **Projects & Research** in navigation.
+- There is no standalone public Research page or research-agenda collection. Explain research through implemented projects, verified evidence, demonstrations, and linked publications.
+- Do not publish prospective methods, detailed roadmaps, planned experiments, or other unpublished research strategy unless the user explicitly selects that material for release.
+- An early-stage project may state its present platform and maturity, but should not expose a detailed future programme.
+- Keep publications as separate records and link them to the relevant project instead of duplicating publication metadata.
+
 ## Project workflow
 
 For project work:

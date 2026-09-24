@@ -28,7 +28,7 @@ npm run build
 
 - `src/pages/` — routes and page-level composition.
 - `src/layouts/` and `src/components/` — shared presentation.
-- `src/content/` — reviewed project, publication, research, and journey records.
+- `src/content/` — reviewed project, publication, and journey records.
 - `public/media/` — selected web-ready media that is intentionally published.
 - `public/documents/` — approved public documents such as a future CV.
 - `materials/` — project-specific raw source material for review; not published automatically.

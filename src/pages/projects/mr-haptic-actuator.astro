@@ -32,6 +32,10 @@ const hilVideo = hilUpdate.media![0];
         Your browser does not support embedded video. <a href={siteUrl(hilVideo.source)}>Open the demonstration video</a>.
       </video>
       <p class="demo-caption" id="system-demo-caption">The interface shows the simulated infusion state and pressure-derived torque command alongside the measured actuator torque. Using Tian Yuan and coauthors' brain interstitial-transport model, the demonstration connects a virtual pressure profile to the physical MR actuator. This is an engineering demonstration, not a clinical validation. <a href="#model-reference">Model reference ↓</a></p>
+      <figure class="system-diagram">
+        <img src={siteUrl('/media/projects/mr-haptic-actuator/mr-actuator-system-communication.webp')} alt="Hardware-in-the-loop communication diagram showing the brain drug-injection model, controller, demo and lab computers, UDP position and pressure signals, and the MR haptic actuator." width="1280" height="720" loading="lazy" />
+        <figcaption>The system exchanges position commands and pressure feedback between the model, controller, demo computer, lab computer, and MR actuator through UDP ports 5005 and 5006.</figcaption>
+      </figure>
     </section>
 
     <figure class="hero">
@@ -104,7 +108,7 @@ const hilVideo = hilUpdate.media![0];
 </BaseLayout>
 
 <style>
-  .system-demo {padding-bottom:3rem;margin-bottom:3rem;border-bottom:1px solid var(--line)}.system-demo h2 {max-width:30ch}.demo-intro {max-width:52rem;color:var(--muted)}.system-demo video {display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0b0d0e;margin-top:1.5rem}.demo-caption {max-width:58rem;margin:1rem 0 0;color:var(--muted);font-size:.9rem}.references {max-width:58rem;margin-top:3rem}.references h2 {font-size:1.25rem;letter-spacing:-.015em}.references p:not(.eyebrow) {color:var(--muted);font-size:.9rem;line-height:1.65}
+  .system-demo {padding-bottom:3rem;margin-bottom:3rem;border-bottom:1px solid var(--line)}.system-demo h2 {max-width:30ch}.demo-intro {max-width:52rem;color:var(--muted)}.system-demo video {display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0b0d0e;margin-top:1.5rem}.demo-caption {max-width:58rem;margin:1rem 0 0;color:var(--muted);font-size:.9rem}.system-diagram {margin-top:2.5rem}.system-diagram img {border:1px solid var(--line)}.references {max-width:58rem;margin-top:3rem}.references h2 {font-size:1.25rem;letter-spacing:-.015em}.references p:not(.eyebrow) {color:var(--muted);font-size:.9rem;line-height:1.65}
   .mr-page {padding-top:3rem}.back {font-size:.9rem} header {margin:3rem 0} h1 {font-size:clamp(3rem,8vw,6.5rem);max-width:14ch}.tags {list-style:none;display:flex;gap:.7rem 1.5rem;flex-wrap:wrap;padding:1rem 0;border-block:1px solid var(--line);margin-top:2rem;font-size:.9rem;color:var(--muted)}
   figure {margin:0} img {display:block;width:100%;height:auto;background:var(--soft)}figcaption {margin-top:.7rem;color:var(--muted);font-size:.88rem}.hero {max-width:62rem;margin-inline:auto}.hero img {max-height:58rem;object-fit:contain}
   h2 {font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.16;letter-spacing:-.035em;margin:0}.split {display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(2rem,6vw,5rem)}.overview,.control {padding:5rem 0}.body-copy,.control>div:last-child {color:var(--muted);font-size:1.05rem}.body-copy :global(p),.control p {margin-top:0}
