@@ -43,7 +43,7 @@ Names below are relative to each project's `materials/<project>/photos/` or `vid
 | vex-robotics | 机器人设计 2019世锦赛.jpg | vex-robot-2019.webp | Hero / project listing |
 | vex-robotics | 决赛场地照 2019世锦赛.jpg | vex-worlds-arena-2019.webp | Arena photograph |
 | vex-robotics | 合照 2019世锦赛.jpg | vex-worlds-team-entrance-2019.webp | Album |
-| vex-robotics | 合照3 2019世锦赛.jpg | vex-worlds-team-stairs-2019.webp | Album |
+| vex-robotics | 合照3 2019世锦赛.jpg | vex-worlds-team-stairs-2019.webp | Album / Journey |
 | vex-robotics | 合照4 2019世锦赛.jpg | vex-worlds-team-hall-2019.webp | Album |
 | vex-robotics | 合照 天津挑战赛.jpg | vex-tianjin-team.webp | Album |
 | vex-robotics | 奖杯 天津挑战赛技能联赛双冠军.jpg | vex-tianjin-awards.webp | Team awards |
