@@ -10,6 +10,7 @@
 | SO101、遥操作、后续触觉与学习 | `materials/haptic-robot-learning/` | `public/media/projects/haptic-robot-learning/` |
 | MATLAB / LabVIEW 远程控制演示 | `materials/remote-control-demo/` | `public/media/projects/remote-control-demo/` |
 | MR 执行器 | `materials/mr-haptic-actuator/` | `public/media/projects/mr-haptic-actuator/` |
+| 个人肖像与跨页面素材 | `materials/shared/` | `public/media/shared/` |
 | 其他项目 | `materials/<project-slug>/` | `public/media/projects/<project-slug>/` |
 
 项目归属按长期研究主题确定，而不只按“控制”“演示”等词分类。早期 SO101 演示属于同一个 `haptic-robot-learning` 项目；这并不代表早期视频已经包含学习或触觉反馈。
@@ -58,12 +59,13 @@ Names below are relative to each project's `materials/<project>/photos/` or `vid
 | mr-haptic-actuator | biomechanical-reference-validation.png | mr-actuator-biomechanical-reference-validation.webp | Model-derived reference validation |
 | mr-haptic-actuator | Hardware-in-the-loop Demo.mp4 | mr-actuator-drug-infusion-hardware-in-loop-demo.mp4 | Opening system demo / matching `-poster.webp`; original retained in `materials-local/` |
 | mr-haptic-actuator | demo.pdf | mr-actuator-system-communication.webp | HIL system communication diagram beside the opening video |
+| shared/portrait | 11f30395fa797f076cb84b4df9a67c26.jpg | dong-qiang-imperial-campus.webp | Journey / Imperial MEng stage |
 
 The two SO101 originals were moved from `materials/remote-control-demo/videos/` to `materials/haptic-robot-learning/videos/` without renaming or modifying their contents. The source-to-public mapping above preserves their meaning. Only the reviewed public derivatives are committed for publication; originals remain local.
 
 ## Future intake
 
-Journey reuses the existing VEX Worlds arena photograph, MR hardware-in-the-loop poster, and SO101 side-view poster from their project-owned public directories. No duplicate assets or new raw material are published for the timeline.
+Journey reuses the existing VEX Worlds team photograph, MR hardware-in-the-loop poster, and SO101 side-view poster from their project-owned public directories. The Imperial campus portrait is published from `materials/shared/portrait/` as a metadata-free WebP derivative.
 
 1. Place source material in the matching project's subfolder with any helpful name.
 2. Inventory and inspect it; resolve uncertain claims before adding them to a page.
