@@ -27,7 +27,7 @@ After creating the GitHub repository:
 3. Choose **GitHub Actions** as the source if it is not already selected.
 4. Check the workflow run under **Actions**.
 
-`astro.config.mjs` derives the GitHub owner and repository base path during Actions builds, so project Pages URLs work without hard-coding a specific account name throughout the site.
+For the `johnqiangdong.github.io` user-site repository, `astro.config.mjs` recognises the `.github.io` suffix and builds with `base: '/'`. It derives the canonical origin as `https://johnqiangdong.github.io`, so the deployed home page is [https://johnqiangdong.github.io/](https://johnqiangdong.github.io/) and internal links remain root-relative.
 
 ## Custom domain later
 

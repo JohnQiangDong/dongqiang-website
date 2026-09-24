@@ -1,6 +1,6 @@
 # Dong Qiang — Personal Research Website
 
-This repository is the long-term source for Dong Qiang's research and engineering website. It is designed for gradual, project-by-project development while keeping research claims, publication records, and public media traceable to reviewed source material.
+This repository is the long-term source for Dong Qiang's research and engineering website at [https://johnqiangdong.github.io/](https://johnqiangdong.github.io/). It is designed for gradual, project-by-project development while keeping research claims, publication records, and public media traceable to reviewed source material.
 
 ## Stack
 
@@ -52,7 +52,7 @@ Place material for an existing project in its matching `materials/<project-slug>
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds and deploys the site to GitHub Pages after a push to `main`, or by manual workflow dispatch. The workflow calculates the repository base path and canonical URL at build time. See `docs/DEPLOYMENT.md` for setup and custom-domain notes.
+`.github/workflows/deploy.yml` builds and deploys the user site from the `johnqiangdong.github.io` repository after a push to `main`, or by manual workflow dispatch. Astro detects the `.github.io` repository name and builds with the root base path `/` and canonical origin `https://johnqiangdong.github.io`. See `docs/DEPLOYMENT.md` for setup and custom-domain notes.
 
 ## Maintainer guidance
 

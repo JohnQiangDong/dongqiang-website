@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1];
-const owner = process.env.GITHUB_REPOSITORY_OWNER;
+const owner = process.env.GITHUB_REPOSITORY_OWNER?.toLowerCase();
 const isUserOrOrganisationSite = repositoryName?.endsWith('.github.io');
 
 export default defineConfig({
