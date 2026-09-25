@@ -79,7 +79,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
               .replace('Back to projects', '返回项目列表')
               .replace('Co-supervisors:', '联合导师：')
               .replace('Co-supervisor:', '联合导师：')
-              .replace('Dr Tian Yuan:', 'Tian Yuan 博士：')
               .replace('Present', '至今');
           }
           return `${leading}${translated}${trailing}`;
