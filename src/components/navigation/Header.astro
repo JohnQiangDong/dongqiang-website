@@ -16,12 +16,15 @@ const toHref = (path: string) => `${base}${path === '/' ? '' : path.slice(1)}`;
 <header class="site-header">
   <div class="header-inner">
     <a class="site-name" href={toHref('/')} aria-label="Dong Qiang — home">Dong Qiang</a>
-    <nav aria-label="Primary navigation">
-      <ul>
-        {links.map(([label, href]) => (
-          <li><a href={toHref(href)} aria-current={currentPath === href || (href !== '/' && currentPath.startsWith(`${href}/`)) ? 'page' : undefined}>{label}</a></li>
-        ))}
-      </ul>
-    </nav>
+    <div class="navigation-row">
+      <nav aria-label="Primary navigation">
+        <ul>
+          {links.map(([label, href]) => (
+            <li><a href={toHref(href)} aria-current={currentPath === href || (href !== '/' && currentPath.startsWith(`${href}/`)) ? 'page' : undefined}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <button class="language-toggle" type="button" data-language-toggle aria-label="切换到中文">中文</button>
+    </div>
   </div>
 </header>
