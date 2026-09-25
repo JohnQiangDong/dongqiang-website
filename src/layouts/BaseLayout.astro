@@ -108,7 +108,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
             .replace('About', '关于')
             .replace('CV', '简历')
             .replace('Page not found', '页面未找到')
-            .replace('Dong Qiang', '董强');
+            .replace('Dong Qiang', '强东');
           const description = document.querySelector('meta[name="description"]');
           if (description) description.setAttribute('content', translate(description.getAttribute('content') || ''));
           const observer = new MutationObserver((mutations) => {
