@@ -63,6 +63,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
             const indexedLabel = core.match(/^(\d{2}\s*\/\s*)(.+)$/);
             if (indexedLabel && zhTranslations[indexedLabel[2]]) translated = `${indexedLabel[1]}${zhTranslations[indexedLabel[2]]}`;
           }
+          if (!translated) {
+            const arrowLabel = core.match(/^(.+?)(\s*↗)$/);
+            if (arrowLabel && zhTranslations[arrowLabel[1]]) translated = `${zhTranslations[arrowLabel[1]]}${arrowLabel[2]}`;
+          }
           if (!translated && core.includes(' · ')) {
             const parts = core.split(' · ');
             const translatedParts = parts.map((part) => zhTranslations[part] || part);
@@ -73,6 +77,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
               .replace('Related project:', '相关项目：')
               .replace('All projects', '全部项目')
               .replace('Back to projects', '返回项目列表')
+              .replace('Co-supervisor:', '联合导师：')
               .replace('Present', '至今');
           }
           return `${leading}${translated}${trailing}`;
@@ -80,7 +85,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         const translateNode = (node) => {
           if (node.nodeType === Node.TEXT_NODE) {
             const parent = node.parentElement;
-            if (parent && !parent.closest('script, style, noscript, code, pre')) {
+            if (parent && !parent.closest('script, style, noscript, code, pre, .authors')) {
               const translated = translate(node.nodeValue || '');
               if (translated !== node.nodeValue) node.nodeValue = translated;
             }
@@ -103,7 +108,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
           document.title = document.title
             .replace('Home', '首页')
             .replace('Projects & Research', '项目与研究')
-            .replace('Publications', '论文发表')
+            .replace('Publications', '论文')
             .replace('Journey', '经历')
             .replace('About', '关于')
             .replace('CV', '简历')
@@ -121,7 +126,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         }
         if (button) {
           button.textContent = language === 'zh' ? 'EN' : '中文';
-          button.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换到中文');
+          button.setAttribute('aria-label', language === 'zh' ? '切换至英文' : '切换至中文');
           button.addEventListener('click', () => {
             const next = language === 'zh' ? 'en' : 'zh';
             try { localStorage.setItem('site-language', next); } catch {}
