@@ -100,7 +100,6 @@ export const zhTranslations: Record<string, string> = {
   'Co-supervisor:': '联合导师：',
   'Co-supervisors:': '联合导师：',
   'Imperial profile ↗': '帝国理工个人简介 ↗',
-  'Personal website ↗': '个人网站 ↗',
   'Department of Mechanical Engineering': '机械工程系',
   'Imperial College London': '帝国理工学院',
   'Curriculum vitae ↗': '个人简历 ↗',
